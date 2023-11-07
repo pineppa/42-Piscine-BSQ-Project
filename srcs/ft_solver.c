@@ -6,7 +6,7 @@
 /*   By: jsala <jsala@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 09:14:08 by jsala             #+#    #+#             */
-/*   Updated: 2023/11/07 19:19:56 by jsala            ###   ########.fr       */
+/*   Updated: 2023/11/07 19:37:52 by jsala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,29 +21,30 @@ void	ft_max_size(int **matrix, t_coord pos)
 			);
 }
 
-t_coord	ft_check_max_pos(int **matrix, t_coord pos_max)
+t_coord	ft_check_max_pos(int **matrix, t_coord sizes)
 {
 	t_coord	p;
-	int val;
+	t_coord pos_max;
+	int max_val;
 
 	p.r = 0;
-	val = 0;
-	while (p.r <= pos_max.r)
+	max_val = 0;
+	while (p.r < sizes.r)
 	{
 		p.c = 0;
-		while (p.c <= pos_max.c)
+		while (p.c < sizes.c)
 		{
-			if (matrix[p.r][p.c] > val)
+			if (matrix[p.r][p.c] > max_val)
 			{
 				pos_max.r = p.r;
 				pos_max.c = p.c;
-				val = matrix[p.r][p.c];
+				max_val = matrix[p.r][p.c];
 			}
 			p.c++;
 		}
 		p.r++;
 	}
-	return (p);
+	return (pos_max);
 }
 
 t_coord	ft_get_bsq_pos(int **matrix, t_coord sizes)
