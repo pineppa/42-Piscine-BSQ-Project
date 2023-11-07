@@ -6,23 +6,12 @@
 /*   By: molasz-a <molasz-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 12:24:23 by molasz-a          #+#    #+#             */
-/*   Updated: 2023/11/07 19:36:12 by molasz-a         ###   ########.fr       */
+/*   Updated: 2023/11/07 20:25:50 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft.h"
 
-int	ft_linelen(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i] != '\n')
-		i++;
-	return (i);
-}
-
-//TODO check duplicated chars (check no all values)
 int	ft_check_first_line(char *str, char *symbols)
 {
 	int		i;
@@ -50,37 +39,13 @@ int	ft_check_first_line(char *str, char *symbols)
 	return (ft_atoi(num));
 }
 
-int	ft_get_cell_status(char *symbols, char c)
+int	**ft_check_board(char *file, int **matrix, char *symbols, t_coord *sizes)
 {
-	int	i;
-
-	i = 0;
-	while (i < 4)
-	{
-		if (symbols[i] == c)
-			break ;
-		i++;
-	}
-	if (i == 0)
-		return (1);
-	else if (i == 1)
-		return (0);
-	throw_error('C');
-	return (-1);
-}
-
-int	**ft_check_board(char *file, int lines, char *symbols, t_coord *sizes)
-{
-	int	**matrix;
 	int	line_size;
 	int	i;
 	int	j;
 	int	k;
 
-	matrix = (int **)malloc((lines + 1) * sizeof(int *));
-	if (!matrix)
-		throw_error('D');
-	matrix[lines] = NULL;
 	i = 0;
 	while (file[i] != '\n')
 		i++;
@@ -93,9 +58,7 @@ int	**ft_check_board(char *file, int lines, char *symbols, t_coord *sizes)
 		if (file[i] == '\n')
 		{
 			if (k != line_size && j > -1)
-			{
 				throw_error('E');
-			}
 			j++;
 			matrix[j] = (int *)malloc((line_size + 1) * sizeof (int));
 			matrix[j][line_size] = -1;
@@ -108,18 +71,31 @@ int	**ft_check_board(char *file, int lines, char *symbols, t_coord *sizes)
 		}
 		i++;
 	}
-	if (j != lines)
-		throw_error('H');
 	matrix[j] = NULL;
+	return (matrix);
+}
+
+int	**ft_create_matrix(int lines)
+{
+	int	**matrix;
+
+	matrix = (int **)malloc((lines + 1) * sizeof(int *));
+	if (!matrix)
+		throw_error('D');
+	matrix[lines] = NULL;
 	return (matrix);
 }
 
 int	**ft_check_file(char *file, t_coord *sizes, char *symbols)
 {
+	int	**matrix;
 	int	lines;
 
 	lines = ft_check_first_line(file, symbols);
+	ft_check_duplicated(symbols);
 	sizes->r = lines;
-	printf("%s, %d\n", symbols, lines);
-	return (ft_check_board(file, lines, symbols, sizes));
+	matrix = ft_create_matrix(lines);
+	ft_check_board(file, matrix, symbols, sizes);
+	ft_check_nlines(lines, matrix);
+	return (matrix);
 }

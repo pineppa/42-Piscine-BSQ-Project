@@ -1,6 +1,6 @@
 SRCDIR	= ./srcs/
 HEAD	= ./includes/
-SRCNAME	= main.c utils.c ft_file_check.c ft_print_sol.c ft_solver.c ft_reader.c
+SRCNAME	= main.c utils.c ft_file_check.c ft_file_check_utils.c ft_print_sol.c ft_solver.c ft_reader.c
 SRCS	= ${addprefix ${SRCDIR}, ${SRCNAME}}
 
 OBJS	= ${SRCS:.c=.o}

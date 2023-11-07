@@ -27,5 +27,9 @@ int		ft_check_first_line(char *str, char *symbols);
 int		**ft_check_file(char *file, t_coord *sizes, char *symbols);
 void	ft_print_sol(int **matrix, char *sym, t_coord sizes, t_coord pos_max);
 t_coord	ft_get_bsq_pos(int **matrix, t_coord sizes);
+void	ft_check_duplicated(char *symbols);
+int		ft_linelen(char *str);
+int		ft_get_cell_status(char *symbols, char c);
+void	ft_check_nlines(int lines, int **matrix);
 
 #endif
