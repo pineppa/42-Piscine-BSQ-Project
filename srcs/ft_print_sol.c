@@ -6,15 +6,15 @@
 /*   By: jsala <jsala@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 11:08:48 by jsala             #+#    #+#             */
-/*   Updated: 2023/11/07 19:37:20 by jsala            ###   ########.fr       */
+/*   Updated: 2023/11/07 20:24:55 by jsala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft.h"
 
-void    ft_putchar(char c)
+void	ft_putchar(char c)
 {
-    write(1, &c, 1);
+	write(1, &c, 1);
 }
 
 void	ft_putstr(char *s)

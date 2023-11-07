@@ -6,7 +6,7 @@
 /*   By: jsala <jsala@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 11:09:47 by molasz-a          #+#    #+#             */
-/*   Updated: 2023/11/07 17:45:21 by jsala            ###   ########.fr       */
+/*   Updated: 2023/11/07 20:27:42 by jsala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	file_size(char *file)
 {
-	int 	f;
-	int 	count;
+	int		f;
+	int		count;
 	char	c;
 
 	count = 0;
@@ -67,7 +67,7 @@ int	file_read(char *file, char *str)
 	return (0);
 }
 
-char *ft_file_str(char *file)
+char	*ft_file_str(char *file)
 {
 	char	*str;
 	int		size;

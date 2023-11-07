@@ -6,7 +6,7 @@
 /*   By: jsala <jsala@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 09:14:08 by jsala             #+#    #+#             */
-/*   Updated: 2023/11/07 19:37:52 by jsala            ###   ########.fr       */
+/*   Updated: 2023/11/07 20:24:36 by jsala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ void	ft_max_size(int **matrix, t_coord pos)
 t_coord	ft_check_max_pos(int **matrix, t_coord sizes)
 {
 	t_coord	p;
-	t_coord pos_max;
-	int max_val;
+	t_coord	pos_max;
+	int		max_val;
 
 	p.r = 0;
 	max_val = 0;
@@ -50,12 +50,8 @@ t_coord	ft_check_max_pos(int **matrix, t_coord sizes)
 t_coord	ft_get_bsq_pos(int **matrix, t_coord sizes)
 {
 	t_coord	p;
-	t_coord pos;
-	// Assumes that with 1 and 0 the last line
-	// and column are already correctly done
-	// --> Check cases for 1x1, 2x2, 0x0;
-	// if (sizes.r < 1 || sizes.c < 1)
-	//	return (p);
+	t_coord	pos;
+
 	p.r = sizes.r - 2;
 	while (p.r >= 0)
 	{
