@@ -2,10 +2,10 @@
 
 # define BSQ
 
-typedef struct s_point
+typedef struct s_coord
 {
-    int x;
-    int y;
-} t_point;
+    int r;
+    int c;
+} t_coord;
 
 #endif

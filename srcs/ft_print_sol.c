@@ -6,26 +6,28 @@
 /*   By: jsala <jsala@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 11:08:48 by jsala             #+#    #+#             */
-/*   Updated: 2023/11/07 11:50:18 by jsala            ###   ########.fr       */
+/*   Updated: 2023/11/07 12:16:01 by jsala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void    ft_print_sol(int **cached, char *symbols, int rows, int cols, t_point pos)
+#include "../includes/ft.h"
+
+void    ft_print_sol(int **cached, char *symbols, t_coord sizes, t_coord pos_max)
 {
-	int r;
-	int c;
+	t_coord p;
 	int i;
 
-	r = -1;
-	c = -1;
+	p.r = -1;
+	p.c = -1;
 	i = 0;
-	while (++r < rows)
+	while (++p.r < sizes.r)
 	{
-		while (++c < cols)
+		while (++p.c < sizes.c)
 		{
-			if (cached[r][c] == 0)
+			if (cached[p.r][p.c] == 0)
 				ft_putchar(symbols[1]);
-			else if ((pos.x < r && r < pos.x + val) && (pos.y < c && c < pos.y + val))
+			else if ((pos_max.r < p.r && p.r < pos.r + val) 
+					&& (pos_max.c < sizes.c && p.c < pos.c + val))
 				ft_putchar(symbols[2]);
 			else
 				ft_putchar(symbols[0]);
