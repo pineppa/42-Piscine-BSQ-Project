@@ -6,7 +6,7 @@
 /*   By: jsala <jsala@student.42barcelona>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 09:14:08 by jsala             #+#    #+#             */
-/*   Updated: 2023/11/07 10:27:25 by jsala            ###   ########.fr       */
+/*   Updated: 2023/11/07 10:49:50 by jsala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,26 +31,26 @@ int	ft_min(int val1, int val2, int val3)
 
 void	ft_max_size(int **cache, int row, int col)
 {
-	cache[row][col] = 1 + ft_min(
-			cache[row + 1][col + 1], cache[row + 1][col], cache[row][col + 1]
+	cache[r][c] = 1 + ft_min(
+			cache[r + 1][c + 1], cache[r + 1][c], cache[r][c + 1]
 			);
 }
 
-int	ft_check_max_pos(int **cache, int size)
+int	ft_check_max_pos(int **cache, int rows, int cols)
 {
-	row = 0;
-	col = 0;
+	r = 0;
+	c = 0;
 	pos = 0;
 	val = 0;
 
-	while (row <= size)
+	while (r <= rows)
 	{
-		while (col <= size)
+		while (c <= cols)
 		{
-			if (cache[row][col] > val)
+			if (cache[r][c] > val)
 			{
-				pos = row * size + col;
-				val = cache[row][col];
+				pos = r * size + c;
+				val = cache[r][c];
 			}
 			col++;
 		}
@@ -65,8 +65,8 @@ int ft_get_bsq_pos(int **cache, int rows, int cols)
 	// Assumes that with 1 and 0 the last line 
 	// and column are already correctly done
 	// --> Check cases for 1x1, 2x2, 0x0;
-	if (size < 2)
-		return (1);
+	if (rows < 1 || cols < 1)
+		return (-1);
 	r = rows - 2;
 	c = cols - 2;
 	while (r >= 0)

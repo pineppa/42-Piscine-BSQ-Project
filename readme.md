@@ -14,6 +14,17 @@ The biggest square :
 ◦ In the case that more than one solution exists, we’ll choose to represent the square that’s closest to the top of the map, then the one that’s most to the left.
 ◦ The program must handle 1 to n files as parameters.
 
+Definition of a valid map :
+◦ All lines must have the same length.
+◦ There’s at least one line of at least one box.
+◦ At each end of line, there’s a line break.
+◦ The characters on the map can only be those introduced in the first line.
+◦ The map is invalid if a character is missing from the first line, or if two characters (of empty, full and obstacle) are identical.
+◦ The characters can be any printable character, even numbers.
+◦ In case of an invalid map, your program should display map error on the error
+output followed by a line break. Your program will then move on to the next
+map.
+
 C Piscine’s final Project BSQ
 ◦ When your program receives more than one map in argument, each solution or map error must be followed by a line break.
 ◦ Should there be no passed arguments, your program must be able to read on the standard input.
@@ -49,8 +60,14 @@ main.c: Handles arguments entry, calls for argument validations and prepares the
 
 ◦ checker.c : Checks that the map passed via the file is correctly defined
 ------------
-- Checks that:
--- 
+- Checks that a map is valid :  --> Return error values?
+◦ All lines must have the same length.  
+◦ There’s at least one line of at least one box.
+◦ At each end of line, there’s a line break.
+◦ The characters on the map can only be those introduced in the first line.
+◦ The map is invalid if a character is missing from the first line, or if two characters (of empty, full and obstacle) are identical.
+◦ The characters can be any printable character, even numbers.
+◦ In case of an invalid map, your program should display map error on the error output followed by a line break. Your program will then move on to the next map. 
 
 ◦ solver.c: Handles the passed map, to solve the problem at hands
 -------------
