@@ -1,5 +1,16 @@
-#include <unistd.h>
-#include <stdlib.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jsala <jsala@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/07 17:12:07 by jsala             #+#    #+#             */
+/*   Updated: 2023/11/07 17:37:12 by jsala            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "ft.h"
 
 void    throw_error(char c)
 {
@@ -8,17 +19,21 @@ void    throw_error(char c)
     exit(1);
 }
 
-void    ft_putchar(char c)
+int		ft_strlen(char *s)
 {
-    write(1, &c, 1);
+	int	count;
+
+	count = 0;
+	while (s[count])
+		count++;
+	return (count);
 }
+
 
 int	ft_min(int val1, int val2, int val3)
 {
 	int res;
 
-	if (val1 < 0 || val2 < 0 || val3 < 0)
-		return (-1); // Do we need to do this??
 	res = val1;
 	if (val2 < res)
 		res = val2;
@@ -55,10 +70,10 @@ int	ft_atoi(char *str)
 
 char	*ft_strcat(char *s1, char *s2)
 {
-	int	s1_len;
-	int	s2_len;
-	int	i;
-	int	res;
+	int		s1_len;
+	int		s2_len;
+	int		i;
+	char	*res;
 
 	i = 0;
 	s1_len = ft_strlen(s1);

@@ -6,12 +6,11 @@
 /*   By: jsala <jsala@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 09:14:08 by jsala             #+#    #+#             */
-/*   Updated: 2023/11/07 17:07:15 by jsala            ###   ########.fr       */
+/*   Updated: 2023/11/07 17:21:17 by jsala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include "../includes/ft.h"
+#include "ft.h"
 
 void	ft_max_size(int **cache, t_coord pos)
 {
@@ -48,7 +47,7 @@ t_coord	ft_check_max_pos(int **cache, t_coord pos_max)
 	return (p);
 }
 
-t_coord ft_get_bsq_pos(int **cached, t_coord sizes)
+t_coord	ft_get_bsq_pos(int **cached, t_coord sizes)
 {
 	t_coord	p;
 	t_coord pos;

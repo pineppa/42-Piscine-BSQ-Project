@@ -6,16 +6,11 @@
 /*   By: jsala <jsala@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 11:09:47 by molasz-a          #+#    #+#             */
-/*   Updated: 2023/11/07 15:49:54 by jsala            ###   ########.fr       */
+/*   Updated: 2023/11/07 17:45:21 by jsala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <unistd.h>
-#include <fcntl.h>
-#include "../includes/ft.h"
-
-void    throw_error(void);
+#include "ft.h"
 
 int	file_size(char *file)
 {
@@ -41,6 +36,7 @@ char	*ft_read_stdin(void)
 	char	*map;
 	int		buf_is_empty;
 
+	map = 0;
 	buff = (char *)malloc(sizeof(char) * BUFF_SIZE + 1);
 	size = 1;
 	buf_is_empty = 1;
@@ -52,7 +48,7 @@ char	*ft_read_stdin(void)
 		ft_strcat(map, buff);
 	}
 	if (buf_is_empty)
-		throw_error();
+		throw_error('W');
 	return (map);
 }
 
@@ -78,10 +74,10 @@ char *ft_file_str(char *file)
 
 	size = file_size(file);
 	if (size < 1)
-		throw_error();
+		throw_error('R');
 	str = (char *)malloc((size + 1) * sizeof(char));
 	str[size] = '\0';
 	if (file_read(file, str))
-		throw_error();
+		throw_error('T');
 	return (str);
 }

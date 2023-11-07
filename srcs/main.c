@@ -1,8 +1,16 @@
-#include <stdio.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jsala <jsala@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/07 17:21:28 by jsala             #+#    #+#             */
+/*   Updated: 2023/11/07 17:26:06 by jsala            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-char	*ft_file_str(char *str);
-int		**ft_check_file(char *file);
-void	throw_error();
+#include "ft.h"
 
 int	main(int argc, char **argv)
 {
@@ -20,7 +28,7 @@ int	main(int argc, char **argv)
 	}
 	else
 	{
-		throw_error();
+		throw_error('Z');
 		return (1);
 	}
 	matrix = ft_check_file(file);

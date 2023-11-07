@@ -1,6 +1,6 @@
 SRCDIR	= ./srcs/
 HEAD	= ./includes/
-SRCNAME	= *.c
+SRCNAME	= main.c utils.c ft_file_check.c ft_print_sol.c ft_solver.c ft_reader.c
 SRCS	= ${addprefix ${SRCDIR}, ${SRCNAME}}
 
 OBJS	= ${SRCS:.c=.o}
@@ -13,7 +13,7 @@ RM		= rm -f
 CFLAGS	= -Wall -Wextra -Werror
 
 .c.o:
-			${CC} ${CFLAGS} -c -I ${HEAD} $< -o ${<:.c=.o}
+			${CC} ${CFLAGS} -c -I ./includes/ $< -o ${<:.c=.o}
 
 ${NAME}:	${OBJS}
 			${CC} -o ${NAME} ${OBJS}

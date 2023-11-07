@@ -3,18 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_file_check.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: molasz-a <molasz-a@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jsala <jsala@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 12:24:23 by molasz-a          #+#    #+#             */
-/*   Updated: 2023/11/07 15:22:45 by molasz-a         ###   ########.fr       */
+/*   Updated: 2023/11/07 17:21:08 by jsala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <stdio.h>
-
-void	throw_error(char c);
-int		ft_atoi(char *str);
+#include "ft.h"
 
 int ft_linelen(char *str)
 {
