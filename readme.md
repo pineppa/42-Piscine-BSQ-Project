@@ -71,10 +71,10 @@ main.c: Handles arguments entry, calls for argument validations and prepares the
 
 ◦ solver.c: Handles the passed map, to solve the problem at hands
 -------------
-- Generates a cache 2D array of the same size of map (generated with NxN spaces of int this time); *malloc*
--- Initialise the cache with 0 and 1 based on obstacles vs empty space;
--- Call the solver algorithm: int ft_get_bsq_pos(int \*\*cache, int size);
--- -- The algorithm substitutes all the 1 with the BSQ and should return the position of the upper left corner (the size can be retrieved via cache\[row\]\[column\])
+- Generates a matrix 2D array of the same size of map (generated with NxN spaces of int this time); *malloc*
+-- Initialise the matrix with 0 and 1 based on obstacles vs empty space;
+-- Call the solver algorithm: int ft_get_bsq_pos(int \*\*matrix, int size);
+-- -- The algorithm substitutes all the 1 with the BSQ and should return the position of the upper left corner (the size can be retrieved via matrix\[row\]\[column\])
 - Frees the generated matrix information and return; *free*
 
 ◦ printer.c: Handles the printing on screen of the solution

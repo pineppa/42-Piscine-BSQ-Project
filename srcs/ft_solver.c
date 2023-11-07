@@ -6,22 +6,22 @@
 /*   By: jsala <jsala@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 09:14:08 by jsala             #+#    #+#             */
-/*   Updated: 2023/11/07 18:44:59 by jsala            ###   ########.fr       */
+/*   Updated: 2023/11/07 19:19:56 by jsala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft.h"
 
-void	ft_max_size(int **cache, t_coord pos)
+void	ft_max_size(int **matrix, t_coord pos)
 {
-	cache[pos.r][pos.c] = 1 + ft_min(
-			cache[pos.r + 1][pos.c + 1],
-			cache[pos.r + 1][pos.c],
-			cache[pos.r][pos.c + 1]
+	matrix[pos.r][pos.c] = 1 + ft_min(
+			matrix[pos.r + 1][pos.c + 1],
+			matrix[pos.r + 1][pos.c],
+			matrix[pos.r][pos.c + 1]
 			);
 }
 
-t_coord	ft_check_max_pos(int **cache, t_coord pos_max)
+t_coord	ft_check_max_pos(int **matrix, t_coord pos_max)
 {
 	t_coord	p;
 	int val;
@@ -33,11 +33,11 @@ t_coord	ft_check_max_pos(int **cache, t_coord pos_max)
 		p.c = 0;
 		while (p.c <= pos_max.c)
 		{
-			if (cache[p.r][p.c] > val)
+			if (matrix[p.r][p.c] > val)
 			{
 				pos_max.r = p.r;
 				pos_max.c = p.c;
-				val = cache[p.r][p.c];
+				val = matrix[p.r][p.c];
 			}
 			p.c++;
 		}
