@@ -20,6 +20,9 @@ ${NAME}:	${OBJS}
 
 all: 		${NAME}
 
+sanitize:	${OBJS}
+			${CC} -o ${NAME} ${OBJS} "-fsanitize=address"
+
 clean:
 			${RM} ${OBJS}
 

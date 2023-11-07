@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: molasz-a <molasz-a@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jsala <jsala@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 17:12:07 by jsala             #+#    #+#             */
-/*   Updated: 2023/11/07 20:56:00 by molasz-a         ###   ########.fr       */
+/*   Updated: 2023/11/07 22:16:17 by jsala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ int		ft_strlen(char *s)
 {
 	int	count;
 
+	if (!s)
+		return (0);
 	count = 0;
 	while (s[count])
 		count++;
@@ -67,7 +69,7 @@ int	ft_atoi(char *str)
 	}
 	return (val * sign);
 }
-
+/*
 char	*ft_strcat(char *s1, char *s2)
 {
 	int		s1_len;
@@ -87,3 +89,4 @@ char	*ft_strcat(char *s1, char *s2)
 	res[s1_len + i] = '\0';
 	return (res);
 }
+*/
