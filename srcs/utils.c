@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsala <jsala@student.42.fr>                +#+  +:+       +#+        */
+/*   By: molasz-a <molasz-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 17:12:07 by jsala             #+#    #+#             */
-/*   Updated: 2023/11/07 17:37:12 by jsala            ###   ########.fr       */
+/*   Updated: 2023/11/07 20:56:00 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,14 +75,15 @@ char	*ft_strcat(char *s1, char *s2)
 	int		i;
 	char	*res;
 
-	i = 0;
+	i = -1;
 	s1_len = ft_strlen(s1);
 	s2_len = ft_strlen(s2);
-	res = (char *)malloc(sizeof(char) * (s1_len + s2_len));
-	while (*s2 && i < s2_len)
-	{
-		s1[s1_len + i] = s2[i];
-	}
-	s1[s1_len + i] = '\0';
-	return (s1);
+	res = (char *)malloc(sizeof(char) * (s1_len + s2_len + 1));
+	while (s1[++i])
+		res[i] = s1[i];
+	i = -1;
+	while (s2[++i])
+		res[s1_len + i] = s2[i];
+	res[s1_len + i] = '\0';
+	return (res);
 }

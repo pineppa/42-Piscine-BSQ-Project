@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 12:24:23 by molasz-a          #+#    #+#             */
-/*   Updated: 2023/11/07 20:25:50 by molasz-a         ###   ########.fr       */
+/*   Updated: 2023/11/07 21:09:29 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,12 @@ int	ft_check_first_line(char *str, char *symbols)
 	int		i;
 	int		size;
 	char	*num;
+	int		value;
 
 	size = ft_linelen(str);
-	i = size - 1;
-	while (i > size - 4)
-	{
+	i = size;
+	while (--i > size - 4)
 		symbols[i - (size - 3)] = str[i];
-		i--;
-	}
 	i = 0;
 	num = (char *)malloc((size - 3 + 1) * sizeof (char));
 	if (!num)
@@ -36,39 +34,42 @@ int	ft_check_first_line(char *str, char *symbols)
 		num[i] = str[i];
 		i++;
 	}
-	return (ft_atoi(num));
+	value = ft_atoi(num);
+	free(num);
+	return (value);
 }
 
-int	**ft_check_board(char *file, int **matrix, char *symbols, t_coord *sizes)
+void	ft_init_write_matrix(int *i, int *j, int *k)
+{
+	*i = 0;
+	*j = -1;
+	*k = 0;
+}
+
+int	**ft_write_matrix(char *file, int **matrix, char *symbols, t_coord *sizes)
 {
 	int	line_size;
 	int	i;
 	int	j;
 	int	k;
 
-	i = 0;
+	ft_init_write_matrix(&i, &j, &k);
 	while (file[i] != '\n')
 		i++;
 	line_size = ft_linelen(&file[i + 1]);
 	sizes->c = line_size;
-	j = -1;
-	k = line_size;
 	while (file[i])
 	{
 		if (file[i] == '\n')
 		{
 			if (k != line_size && j > -1)
 				throw_error('E');
-			j++;
-			matrix[j] = (int *)malloc((line_size + 1) * sizeof (int));
+			matrix[++j] = (int *)malloc((line_size + 1) * sizeof (int));
 			matrix[j][line_size] = -1;
 			k = 0;
 		}
 		else
-		{
-			matrix[j][k] = ft_get_cell_status(symbols, file[i]);
-			k++;
-		}
+			matrix[j][k++] = ft_get_cell_status(symbols, file[i]);
 		i++;
 	}
 	matrix[j] = NULL;
@@ -95,7 +96,7 @@ int	**ft_check_file(char *file, t_coord *sizes, char *symbols)
 	ft_check_duplicated(symbols);
 	sizes->r = lines;
 	matrix = ft_create_matrix(lines);
-	ft_check_board(file, matrix, symbols, sizes);
+	ft_write_matrix(file, matrix, symbols, sizes);
 	ft_check_nlines(lines, matrix);
 	return (matrix);
 }

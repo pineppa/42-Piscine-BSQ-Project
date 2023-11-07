@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsala <jsala@student.42.fr>                +#+  +:+       +#+        */
+/*   By: molasz-a <molasz-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 17:21:28 by jsala             #+#    #+#             */
-/*   Updated: 2023/11/07 20:23:12 by jsala            ###   ########.fr       */
+/*   Updated: 2023/11/07 21:01:43 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,11 @@ int	main(int argc, char **argv)
 	}
 	symbols[3] = '\0';
 	matrix = ft_check_file(file, &sizes, symbols);
+	free(file);
 	pos_max = ft_get_bsq_pos(matrix, sizes);
 	printf("%d, %d \n", pos_max.r, pos_max.c);
-/*	i = 0;
+	/*
+	i = 0;
 	while(i < sizes.r)
 	{
 		j = 0;
@@ -46,7 +48,8 @@ int	main(int argc, char **argv)
 		}
 		printf("\n");
 		i++;
-	}*/
+	}
+	*/
 	ft_print_sol(matrix, symbols, sizes, pos_max);
 	return (0);
 }

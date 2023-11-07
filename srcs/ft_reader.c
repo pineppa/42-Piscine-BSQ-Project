@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_reader.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsala <jsala@student.42.fr>                +#+  +:+       +#+        */
+/*   By: molasz-a <molasz-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 11:09:47 by molasz-a          #+#    #+#             */
-/*   Updated: 2023/11/07 20:27:42 by jsala            ###   ########.fr       */
+/*   Updated: 2023/11/07 20:56:02 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,12 @@ int	file_size(char *file)
 char	*ft_read_stdin(void)
 {
 	char	*buff;
-	int		size;
 	char	*map;
+	int		size;
 	int		buf_is_empty;
 
 	map = 0;
-	buff = (char *)malloc(sizeof(char) * BUFF_SIZE + 1);
+	buff = (char *)malloc(sizeof(char) * (BUFF_SIZE + 1));
 	size = 1;
 	buf_is_empty = 1;
 	while (size != 0)
@@ -45,8 +45,9 @@ char	*ft_read_stdin(void)
 		buf_is_empty = 0;
 		size = read(STDIN_FILENO, buff, BUFF_SIZE);
 		buff[size] = '\0';
-		ft_strcat(map, buff);
+		map = ft_strcat(map, buff);
 	}
+	free(buff);
 	if (buf_is_empty)
 		throw_error('W');
 	return (map);
