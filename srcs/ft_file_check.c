@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_file_check.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsala <jsala@student.42.fr>                +#+  +:+       +#+        */
+/*   By: molasz-a <molasz-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 12:24:23 by molasz-a          #+#    #+#             */
-/*   Updated: 2023/11/07 17:21:08 by jsala            ###   ########.fr       */
+/*   Updated: 2023/11/07 18:17:50 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ int	**ft_check_board(char *file, int lines, char *symbols)
 	matrix = (int **)malloc((lines + 1) * sizeof(int *));
 	if(!matrix)
 		throw_error('D');
-	matrix[lines] = 0;
+	matrix[lines] = NULL;
 
 	i = 0;
 	while(file[i] != '\n')
@@ -93,13 +93,13 @@ int	**ft_check_board(char *file, int lines, char *symbols)
 	{
 		if (file[i] == '\n')
 		{
-			printf("%c\n", file[i]);
 			if (k != line_size && j > -1)
 			{
 				throw_error('E');
 			}
 			j++;
-			matrix[j] = (int *)malloc((line_size) * sizeof (int));
+			matrix[j] = (int *)malloc((line_size + 1) * sizeof (int));
+			matrix[j][line_size] = -1;
 			k = 0;
 		}
 		else
@@ -109,7 +109,9 @@ int	**ft_check_board(char *file, int lines, char *symbols)
 		}
 		i++;
 	}
-
+	if (j != lines)
+		throw_error('H');
+	matrix[j] = NULL;
 	return (matrix);
 }
 
@@ -120,5 +122,6 @@ int	**ft_check_file(char *file)
 
 	symbols[3] = '\0';
 	lines = ft_check_first_line(file, symbols);
+	printf("%s, %d\n", symbols, lines);
 	return (ft_check_board(file, lines, symbols));
 }

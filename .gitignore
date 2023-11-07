@@ -2,3 +2,5 @@
 *.o
 *.swp
 *.out
+.vscode
+bsq
