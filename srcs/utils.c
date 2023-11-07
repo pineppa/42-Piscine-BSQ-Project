@@ -13,6 +13,20 @@ void    ft_putchar(char c)
     write(1, &c, 1);
 }
 
+int	ft_min(int val1, int val2, int val3)
+{
+	int res;
+
+	if (val1 < 0 || val2 < 0 || val3 < 0)
+		return (-1); // Do we need to do this??
+	res = val1;
+	if (val2 < res)
+		res = val2;
+	if (val3 < res)
+		res = val3;
+	return (res);
+}
+
 int	ft_atoi(char *str)
 {
 	int	val;
