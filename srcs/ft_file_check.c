@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 12:24:23 by molasz-a          #+#    #+#             */
-/*   Updated: 2023/11/07 21:09:29 by molasz-a         ###   ########.fr       */
+/*   Updated: 2023/11/07 22:36:46 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,13 @@ int	ft_check_first_line(char *str, char *symbols)
 	return (value);
 }
 
-void	ft_init_write_matrix(int *i, int *j, int *k)
+void	ft_init_write_matrix(int *i, int *j, int *k, char *file)
 {
 	*i = 0;
 	*j = -1;
 	*k = 0;
+	while (file[*i] != '\n')
+		*i += 1;
 }
 
 int	**ft_write_matrix(char *file, int **matrix, char *symbols, t_coord *sizes)
@@ -53,9 +55,7 @@ int	**ft_write_matrix(char *file, int **matrix, char *symbols, t_coord *sizes)
 	int	j;
 	int	k;
 
-	ft_init_write_matrix(&i, &j, &k);
-	while (file[i] != '\n')
-		i++;
+	ft_init_write_matrix(&i, &j, &k, file);
 	line_size = ft_linelen(&file[i + 1]);
 	sizes->c = line_size;
 	while (file[i])

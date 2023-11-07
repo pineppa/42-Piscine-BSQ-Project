@@ -3,16 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsala <jsala@student.42.fr>                +#+  +:+       +#+        */
+/*   By: molasz-a <molasz-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 17:21:28 by jsala             #+#    #+#             */
-/*   Updated: 2023/11/07 22:27:21 by jsala            ###   ########.fr       */
+/*   Updated: 2023/11/07 22:57:37 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft.h"
 
-void exec_solver(char *file)
+void	free_matrix(int **matrix, int size)
+{
+	int i;
+
+	i = 0;
+	while(i < size)
+	{
+		free(matrix[i]);
+		i++;
+	}
+}
+
+void	exec_solver(char *file)
 {
 	t_coord	sizes;
 	t_coord	pos_max;
@@ -21,31 +33,16 @@ void exec_solver(char *file)
 
 	symbols[3] = '\0';
 	matrix = ft_check_file(file, &sizes, symbols);
-	free(file);
 	pos_max = ft_get_bsq_pos(matrix, sizes);
-/*
-	i = 0;
-	while(i < sizes.r)
-	{
-		j = 0;
-		while (j < sizes.c)
-		{
-			printf("%d ", matrix[i][j]);
-			j++;
-		}
-		printf("\n");
-		i++;
-	}
-	*/
 	ft_print_sol(matrix, symbols, sizes, pos_max);
-	//free_matrix(matrix); // ToDo: create function
+	free(file);
+	free_matrix(matrix, sizes.r);
 }
 
 int	main(int argc, char **argv)
 {
 	char	*file;
 	int		i;
-//	int		j;
 
 	if (argc == 1)
 	{

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_sol.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsala <jsala@student.42.fr>                +#+  +:+       +#+        */
+/*   By: molasz-a <molasz-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 11:08:48 by jsala             #+#    #+#             */
-/*   Updated: 2023/11/07 20:24:55 by jsala            ###   ########.fr       */
+/*   Updated: 2023/11/07 22:58:02 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ void	ft_print_sol(int **matrix, char *sym, t_coord sizes, t_coord pos_max)
 	p.r = -1;
 	i = 0;
 	max_val = matrix[pos_max.r][pos_max.c];
-	printf("%d\n", max_val);
 	while (++p.r < sizes.r)
 	{
 		p.c = -1;

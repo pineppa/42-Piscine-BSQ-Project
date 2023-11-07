@@ -3,23 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsala <jsala@student.42.fr>                +#+  +:+       +#+        */
+/*   By: molasz-a <molasz-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 17:12:07 by jsala             #+#    #+#             */
-/*   Updated: 2023/11/07 22:16:17 by jsala            ###   ########.fr       */
+/*   Updated: 2023/11/07 22:38:11 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft.h"
 
-void    throw_error(char c)
+void	throw_error(char c)
 {
-    write(1, &c, 1);
-    write(1, " map error\n", 10);
-    exit(1);
+	write(1, &c, 1);
+	write(1, " map error\n", 10);
+	exit(1);
 }
 
-int		ft_strlen(char *s)
+int	ft_strlen(char *s)
 {
 	int	count;
 
@@ -31,10 +31,9 @@ int		ft_strlen(char *s)
 	return (count);
 }
 
-
 int	ft_min(int val1, int val2, int val3)
 {
-	int res;
+	int	res;
 
 	res = val1;
 	if (val2 < res)
