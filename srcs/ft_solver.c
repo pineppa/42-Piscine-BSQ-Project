@@ -6,7 +6,7 @@
 /*   By: jsala <jsala@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 09:14:08 by jsala             #+#    #+#             */
-/*   Updated: 2023/11/07 13:21:36 by jsala            ###   ########.fr       */
+/*   Updated: 2023/11/07 14:03:00 by jsala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,8 @@ t_coord ft_get_bsq_pos(int **cached, t_coord sizes)
 	// Assumes that with 1 and 0 the last line
 	// and column are already correctly done
 	// --> Check cases for 1x1, 2x2, 0x0;
-	if (sizes.r < 1 || sizes.c < 1)
-		return (-1);
+	// if (sizes.r < 1 || sizes.c < 1)
+	//	return (p);
 	p.r = sizes.r - 2;
 	p.c = sizes.c - 2;
 	while (p.r >= 0)
