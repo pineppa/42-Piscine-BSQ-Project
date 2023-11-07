@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ft_reader.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: molasz-a <molasz-a@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jsala <jsala@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 11:09:47 by molasz-a          #+#    #+#             */
-/*   Updated: 2023/11/07 11:26:22 by molasz-a         ###   ########.fr       */
+/*   Updated: 2023/11/07 15:49:54 by jsala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <unistd.h>
 #include <fcntl.h>
+#include "../includes/ft.h"
 
 void    throw_error(void);
 
@@ -31,6 +32,28 @@ int	file_size(char *file)
 	if (close(f) < 0)
 		return (-1);
 	return (count);
+}
+
+char	*ft_read_stdin(void)
+{
+	char	*buff;
+	int		size;
+	char	*map;
+	int		buf_is_empty;
+
+	buff = (char *)malloc(sizeof(char) * BUFF_SIZE + 1);
+	size = 1;
+	buf_is_empty = 1;
+	while (size != 0)
+	{
+		buf_is_empty = 0;
+		size = read(STDIN_FILENO, buff, BUFF_SIZE);
+		buff[size] = '\0';
+		ft_strcat(map, buff);
+	}
+	if (buf_is_empty)
+		throw_error();
+	return (map);
 }
 
 int	file_read(char *file, char *str)

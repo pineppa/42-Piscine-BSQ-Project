@@ -1,6 +1,6 @@
 SRCDIR	= ./srcs/
 HEAD	= ./includes/
-SRCNAME	= main.c solver.c
+SRCNAME	= *.c
 SRCS	= ${addprefix ${SRCDIR}, ${SRCNAME}}
 
 OBJS	= ${SRCS:.c=.o}

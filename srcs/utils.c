@@ -52,3 +52,22 @@ int	ft_atoi(char *str)
 	}
 	return (val * sign);
 }
+
+char	*ft_strcat(char *s1, char *s2)
+{
+	int	s1_len;
+	int	s2_len;
+	int	i;
+	int	res;
+
+	i = 0;
+	s1_len = ft_strlen(s1);
+	s2_len = ft_strlen(s2);
+	res = (char *)malloc(sizeof(char) * (s1_len + s2_len));
+	while (*s2 && i < s2_len)
+	{
+		s1[s1_len + i] = s2[i];
+	}
+	s1[s1_len + i] = '\0';
+	return (s1);
+}
