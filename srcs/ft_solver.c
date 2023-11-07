@@ -6,13 +6,14 @@
 /*   By: jsala <jsala@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 09:14:08 by jsala             #+#    #+#             */
-/*   Updated: 2023/11/07 11:50:14 by jsala            ###   ########.fr       */
+/*   Updated: 2023/11/07 12:47:49 by jsala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 // File used only to initiate functions and pass test 2D arrays
 
 #include <stdlib.h>
+#include "../includes/ft.h"
 
 int	ft_min(int val1, int val2, int val3)
 {
@@ -28,50 +29,47 @@ int	ft_min(int val1, int val2, int val3)
 	return (res);
 }
 
-void	ft_max_size(int **cache, int row, int col)
+void	ft_max_size(int **cache, t_coord pos)
 {
-	int r;
-	int c;
-
-	r = 0;
-	c = 0;
-	cache[r][c] = 1 + ft_min(
-			cache[r + 1][c + 1], cache[r + 1][c], cache[r][c + 1]
+	cache[pos.r][pos.c] = 1 + ft_min(
+			cache[pos.r + 1][pos.c + 1],
+			cache[pos.r + 1][pos.c],
+			cache[pos.r][pos.c + 1]
 			);
 }
 
-int	ft_check_max_pos(int **cache, int rows, int cols)
+int	ft_check_max_pos(int **cache, t_coord pos_max)
 {
 	int r;
 	int	c;
-	int	pos;
+	t_coord	pos;
 	int val;
 
 	r = 0;
 	c = 0;
-	pos = 0;
 	val = 0;
 
-	while (r <= rows)
+	while (r <= pos_max.r)
 	{
-		while (c <= cols)
+		while (c <= pos_max.c)
 		{
-			if (cache[r][c] > val)
+			if (cache[pos.r][pos.c] > val)
 			{
-				pos = r * cols + c;
-				val = cache[r][c];
+				pos.r = r
+				pos.c = c;
+				val = cache[pos.r][pos.c];
 			}
 			c++;
 		}
 		r++;
-	return (pos); // Return the position as a row * size + col (Possible because it is a square)
+	return (pos);
 }
 
 int ft_get_bsq_pos(int **cache, int rows, int cols)
 {
 	int	r;
 	int	c;
-	// Assumes that with 1 and 0 the last line 
+	// Assumes that with 1 and 0 the last line
 	// and column are already correctly done
 	// --> Check cases for 1x1, 2x2, 0x0;
 	if (rows < 1 || cols < 1)
