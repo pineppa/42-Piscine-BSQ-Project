@@ -1,19 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   solver.c                                           :+:      :+:    :+:   */
+/*   ft_solver.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsala <jsala@student.42barcelona>          +#+  +:+       +#+        */
+/*   By: jsala <jsala@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 09:14:08 by jsala             #+#    #+#             */
-/*   Updated: 2023/11/07 10:49:50 by jsala            ###   ########.fr       */
+/*   Updated: 2023/11/07 11:50:14 by jsala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 // File used only to initiate functions and pass test 2D arrays
 
 #include <stdlib.h>
-#define N = 5
 
 int	ft_min(int val1, int val2, int val3)
 {
@@ -25,12 +24,17 @@ int	ft_min(int val1, int val2, int val3)
 	if (val2 < res)
 		res = val2;
 	if (val3 < res)
-		res = val3
+		res = val3;
 	return (res);
 }
 
 void	ft_max_size(int **cache, int row, int col)
 {
+	int r;
+	int c;
+
+	r = 0;
+	c = 0;
 	cache[r][c] = 1 + ft_min(
 			cache[r + 1][c + 1], cache[r + 1][c], cache[r][c + 1]
 			);
@@ -38,6 +42,11 @@ void	ft_max_size(int **cache, int row, int col)
 
 int	ft_check_max_pos(int **cache, int rows, int cols)
 {
+	int r;
+	int	c;
+	int	pos;
+	int val;
+
 	r = 0;
 	c = 0;
 	pos = 0;
@@ -49,12 +58,12 @@ int	ft_check_max_pos(int **cache, int rows, int cols)
 		{
 			if (cache[r][c] > val)
 			{
-				pos = r * size + c;
+				pos = r * cols + c;
 				val = cache[r][c];
 			}
-			col++;
+			c++;
 		}
-		row++;
+		r++;
 	return (pos); // Return the position as a row * size + col (Possible because it is a square)
 }
 
@@ -79,27 +88,6 @@ int ft_get_bsq_pos(int **cache, int rows, int cols)
 		}
 		row--;
 	}
-	pos = ft_check_max_pos(cache, size)
+	pos = ft_check_max_pos(cache, size);
 	return (pos);
-}
-
-int	main(void)
-{
-	int	**cached;
-
-	**cached = NULL;
-	cached = (int **)malloc(sizeof(int *) * N);
-	for (int i = 0, i < N, i++)
-	{
-		cached[i] = malloc(sizeof(int) * N);
-		for (int j = 0, j < N, j++)
-			cached[i][j] = 1;
-	}
-	ft_get_bsq_pos(chached);
-//	ft_print_sol();
-	for (int i = 0; i < N; i++){
-		free(*cached);
-	}
-	free(cached);
-	return (0)
 }
