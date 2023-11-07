@@ -6,11 +6,15 @@
 /*   By: molasz-a <molasz-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 12:24:23 by molasz-a          #+#    #+#             */
-/*   Updated: 2023/11/07 12:47:12 by molasz-a         ###   ########.fr       */
+/*   Updated: 2023/11/07 15:22:45 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	throw_error();
+#include <stdlib.h>
+#include <stdio.h>
+
+void	throw_error(char c);
+int		ft_atoi(char *str);
 
 int ft_linelen(char *str)
 {
@@ -29,21 +33,21 @@ int ft_check_first_line(char *str, char *symbols)
 	int		size;
 	char	*num;
 
-	size = ft_check_file(str);
+	size = ft_linelen(str);
 	i = size - 1;
-	while (i > (3 - (size - i)))
+	while (i > size - 4)
 	{
-		symbols[3 - (size - i)] = str[i];
-		i++;
+		symbols[i - (size - 3)] = str[i];
+		i--;
 	}
 	i = 0;
 	num = (char *)malloc((size - 3 + 1) * sizeof (char));
 	if (!num)
-		throw_error();
+		throw_error('A');
 	while (size - i > 3)
 	{
 		if (!(str[i] >= '0' && str[i] <= '9'))
-			throw_error();
+			throw_error('B');
 		num[i] = str[i];
 		i++;
 	}
@@ -53,21 +57,23 @@ int ft_check_first_line(char *str, char *symbols)
 int	ft_get_cell_status(char *symbols, char c)
 {
 	int i;
-	int result;
 
 	i = 0;
-	while (symbols[i])
+	while (i < 4)
 	{
 		if (symbols[i] == c)
 			break;
 		i++;
 	}
-	if (i < 2)
-		return (i);
-	throw_error();
+	if (i == 0)
+		return (1);
+	else if (i == 1)
+		return (0);
+	throw_error('C');
+	return (-1);
 }
 
-void	ft_check_board(char *file, int lines, char *symbols)
+int	**ft_check_board(char *file, int lines, char *symbols)
 {
 	int	**matrix;
 	int	line_size;
@@ -77,21 +83,25 @@ void	ft_check_board(char *file, int lines, char *symbols)
 
 	matrix = (int **)malloc((lines + 1) * sizeof(int *));
 	if(!matrix)
-		throw_error();
+		throw_error('D');
 	matrix[lines] = 0;
 
 	i = 0;
 	while(file[i] != '\n')
 		i++;
-	line_size = ft_linelen(&file[i]);
+	line_size = ft_linelen(&file[i + 1]);
 
 	j = -1;
+	k = line_size;
 	while (file[i])
 	{
 		if (file[i] == '\n')
 		{
-			if (k != line_size)
-				throw_error();
+			printf("%c\n", file[i]);
+			if (k != line_size && j > -1)
+			{
+				throw_error('E');
+			}
 			j++;
 			matrix[j] = (int *)malloc((line_size) * sizeof (int));
 			k = 0;
@@ -99,15 +109,20 @@ void	ft_check_board(char *file, int lines, char *symbols)
 		else
 		{
 			matrix[j][k] = ft_get_cell_status(symbols, file[i]);
+			k++;
 		}
+		i++;
 	}
+
+	return (matrix);
 }
 
-ft_check_file(char *file)
+int	**ft_check_file(char *file)
 {
-	char	symbols[3];
+	char	symbols[4];
 	int		lines;
 
+	symbols[3] = '\0';
 	lines = ft_check_first_line(file, symbols);
-	ft_check_board(file, lines, symbols);
+	return (ft_check_board(file, lines, symbols));
 }

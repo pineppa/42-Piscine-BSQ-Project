@@ -1,9 +1,10 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-void    throw_error(void)
+void    throw_error(char c)
 {
-    write(1, "map error\n", 10);
+    write(1, &c, 1);
+    write(1, " map error\n", 10);
     exit(1);
 }
 
