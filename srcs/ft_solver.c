@@ -6,11 +6,9 @@
 /*   By: jsala <jsala@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 09:14:08 by jsala             #+#    #+#             */
-/*   Updated: 2023/11/07 12:47:49 by jsala            ###   ########.fr       */
+/*   Updated: 2023/11/07 13:21:36 by jsala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-// File used only to initiate functions and pass test 2D arrays
 
 #include <stdlib.h>
 #include "../includes/ft.h"
@@ -38,54 +36,53 @@ void	ft_max_size(int **cache, t_coord pos)
 			);
 }
 
-int	ft_check_max_pos(int **cache, t_coord pos_max)
+t_coord	ft_check_max_pos(int **cache, t_coord pos_max)
 {
-	int r;
-	int	c;
-	t_coord	pos;
+	t_coord	p;
 	int val;
 
-	r = 0;
-	c = 0;
+	p.r = 0;
+	p.c = 0;
 	val = 0;
 
-	while (r <= pos_max.r)
+	while (p.r <= pos_max.r)
 	{
-		while (c <= pos_max.c)
+		while (p.c <= pos_max.c)
 		{
-			if (cache[pos.r][pos.c] > val)
+			if (cache[p.r][p.c] > val)
 			{
-				pos.r = r
-				pos.c = c;
-				val = cache[pos.r][pos.c];
+				pos_max.r = p.r;
+				pos_max.c = p.c;
+				val = cache[p.r][p.c];
 			}
-			c++;
+			p.c++;
 		}
-		r++;
-	return (pos);
+		p.r++;
+	}
+	return (p);
 }
 
-int ft_get_bsq_pos(int **cache, int rows, int cols)
+t_coord ft_get_bsq_pos(int **cached, t_coord sizes)
 {
-	int	r;
-	int	c;
+	t_coord	p;
+	t_coord pos;
 	// Assumes that with 1 and 0 the last line
 	// and column are already correctly done
 	// --> Check cases for 1x1, 2x2, 0x0;
-	if (rows < 1 || cols < 1)
+	if (sizes.r < 1 || sizes.c < 1)
 		return (-1);
-	r = rows - 2;
-	c = cols - 2;
-	while (r >= 0)
+	p.r = sizes.r - 2;
+	p.c = sizes.c - 2;
+	while (p.r >= 0)
 	{
-		while (c >= 0)
+		while (p.c >= 0)
 		{
-			if (cache[r][c] != 0)
-				ft_max_size(cache, r, c);
-			col--;
+			if (cached[p.r][p.c] != 0)
+				ft_max_size(cached, p);
+			p.c--;
 		}
-		row--;
+		p.r--;
 	}
-	pos = ft_check_max_pos(cache, size);
+	pos = ft_check_max_pos(cached, sizes);
 	return (pos);
 }
