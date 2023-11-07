@@ -61,13 +61,13 @@ main.c: Handles arguments entry, calls for argument validations and prepares the
 ◦ checker.c : Checks that the map passed via the file is correctly defined
 ------------
 - Checks that a map is valid :  --> Return error values?
-◦ All lines must have the same length.  
+◦ All lines must have the same length.
 ◦ There’s at least one line of at least one box.
 ◦ At each end of line, there’s a line break.
 ◦ The characters on the map can only be those introduced in the first line.
 ◦ The map is invalid if a character is missing from the first line, or if two characters (of empty, full and obstacle) are identical.
 ◦ The characters can be any printable character, even numbers.
-◦ In case of an invalid map, your program should display map error on the error output followed by a line break. Your program will then move on to the next map. 
+◦ In case of an invalid map, your program should display map error on the error output followed by a line break. Your program will then move on to the next map.
 
 ◦ solver.c: Handles the passed map, to solve the problem at hands
 -------------
@@ -75,7 +75,7 @@ main.c: Handles arguments entry, calls for argument validations and prepares the
 -- Initialise the cache with 0 and 1 based on obstacles vs empty space;
 -- Call the solver algorithm: int ft_get_bsq_pos(int \*\*cache, int size);
 -- -- The algorithm substitutes all the 1 with the BSQ and should return the position of the upper left corner (the size can be retrieved via cache\[row\]\[column\])
-- Frees the generated cached information and return; *free*
+- Frees the generated matrix information and return; *free*
 
 ◦ printer.c: Handles the printing on screen of the solution
 ------------
@@ -88,7 +88,7 @@ Every area on the edges will be:
 - 1 if there is an empty space;
 - 0 if there is an object;
 
-Start by allocating a 2D array, in order to store a sort of cached map in parallel to the original one.
+Start by allocating a 2D array, in order to store a sort of matrix map in parallel to the original one.
 Add values going from the bottom right corner, either going up or left one line at the time.
 
 Each internal square can be filled with the maximum square from that position.

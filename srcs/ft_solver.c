@@ -6,7 +6,7 @@
 /*   By: jsala <jsala@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 09:14:08 by jsala             #+#    #+#             */
-/*   Updated: 2023/11/07 17:21:17 by jsala            ###   ########.fr       */
+/*   Updated: 2023/11/07 18:44:59 by jsala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,10 @@ t_coord	ft_check_max_pos(int **cache, t_coord pos_max)
 	int val;
 
 	p.r = 0;
-	p.c = 0;
 	val = 0;
-
 	while (p.r <= pos_max.r)
 	{
+		p.c = 0;
 		while (p.c <= pos_max.c)
 		{
 			if (cache[p.r][p.c] > val)
@@ -47,7 +46,7 @@ t_coord	ft_check_max_pos(int **cache, t_coord pos_max)
 	return (p);
 }
 
-t_coord	ft_get_bsq_pos(int **cached, t_coord sizes)
+t_coord	ft_get_bsq_pos(int **matrix, t_coord sizes)
 {
 	t_coord	p;
 	t_coord pos;
@@ -57,17 +56,17 @@ t_coord	ft_get_bsq_pos(int **cached, t_coord sizes)
 	// if (sizes.r < 1 || sizes.c < 1)
 	//	return (p);
 	p.r = sizes.r - 2;
-	p.c = sizes.c - 2;
 	while (p.r >= 0)
 	{
+		p.c = sizes.c - 2;
 		while (p.c >= 0)
 		{
-			if (cached[p.r][p.c] != 0)
-				ft_max_size(cached, p);
+			if (matrix[p.r][p.c] != 0)
+				ft_max_size(matrix, p);
 			p.c--;
 		}
 		p.r--;
 	}
-	pos = ft_check_max_pos(cached, sizes);
+	pos = ft_check_max_pos(matrix, sizes);
 	return (pos);
 }

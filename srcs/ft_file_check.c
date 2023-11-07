@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_file_check.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: molasz-a <molasz-a@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jsala <jsala@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 12:24:23 by molasz-a          #+#    #+#             */
-/*   Updated: 2023/11/07 18:17:50 by molasz-a         ###   ########.fr       */
+/*   Updated: 2023/11/07 18:33:14 by jsala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,13 +115,15 @@ int	**ft_check_board(char *file, int lines, char *symbols)
 	return (matrix);
 }
 
-int	**ft_check_file(char *file)
+int	**ft_check_file(char *file, t_coord *sizes)
 {
 	char	symbols[4];
 	int		lines;
 
 	symbols[3] = '\0';
 	lines = ft_check_first_line(file, symbols);
+	sizes->r = lines;
+	sizes->c = 27;   // CHANGE HARD CODED VALUE // ToDo
 	printf("%s, %d\n", symbols, lines);
 	return (ft_check_board(file, lines, symbols));
 }
