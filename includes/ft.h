@@ -24,7 +24,7 @@ char	*ft_strcat(char *s1, char *s2);
 char	*ft_read_stdin(void);
 char	*ft_file_str(char *file);
 int		ft_check_first_line(char *str, char *symbols);
-int		**ft_check_file(char *file, t_coord *sizes);
+int		**ft_check_file(char *file, t_coord *sizes, char *symbols);
 void	ft_print_sol(int **matrix, char *sym, t_coord sizes, t_coord pos_max);
 t_coord	ft_get_bsq_pos(int **matrix, t_coord sizes);
 

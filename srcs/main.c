@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsala <jsala@student.42.fr>                +#+  +:+       +#+        */
+/*   By: molasz-a <molasz-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 17:21:28 by jsala             #+#    #+#             */
-/*   Updated: 2023/11/07 18:55:25 by jsala            ###   ########.fr       */
+/*   Updated: 2023/11/07 19:31:39 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int	main(int argc, char **argv)
 {
 	char	*file;
 	int		**matrix;
+	char	symbols[4];
 	t_coord	sizes;
 	t_coord pos_max;
 	int	i;
@@ -30,7 +31,9 @@ int	main(int argc, char **argv)
 		throw_error('Z');
 		return (1);
 	}
-	matrix = ft_check_file(file, &sizes);
+
+	symbols[3] = '\0';
+	matrix = ft_check_file(file, &sizes, symbols);
 	pos_max = ft_get_bsq_pos(matrix, sizes);
 	printf("%d, %d \n", pos_max.r, pos_max.c);
 	i = 0;
@@ -45,6 +48,6 @@ int	main(int argc, char **argv)
 		printf("\n");
 		i++;
 	}
-	ft_print_sol(matrix, ".xo", sizes, pos_max); //ft_print_sol(matrix, symbols, sizes, pos_max)
+	ft_print_sol(matrix, symbols, sizes, pos_max); //ft_print_sol(matrix, symbols, sizes, pos_max)
 	return (0);
 }

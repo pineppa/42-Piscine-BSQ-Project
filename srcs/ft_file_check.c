@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_file_check.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsala <jsala@student.42.fr>                +#+  +:+       +#+        */
+/*   By: molasz-a <molasz-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 12:24:23 by molasz-a          #+#    #+#             */
-/*   Updated: 2023/11/07 18:33:14 by jsala            ###   ########.fr       */
+/*   Updated: 2023/11/07 19:36:12 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft.h"
 
-int ft_linelen(char *str)
+int	ft_linelen(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i] != '\n')
@@ -23,7 +23,7 @@ int ft_linelen(char *str)
 }
 
 //TODO check duplicated chars (check no all values)
-int ft_check_first_line(char *str, char *symbols)
+int	ft_check_first_line(char *str, char *symbols)
 {
 	int		i;
 	int		size;
@@ -52,13 +52,13 @@ int ft_check_first_line(char *str, char *symbols)
 
 int	ft_get_cell_status(char *symbols, char c)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < 4)
 	{
 		if (symbols[i] == c)
-			break;
+			break ;
 		i++;
 	}
 	if (i == 0)
@@ -69,7 +69,7 @@ int	ft_get_cell_status(char *symbols, char c)
 	return (-1);
 }
 
-int	**ft_check_board(char *file, int lines, char *symbols)
+int	**ft_check_board(char *file, int lines, char *symbols, t_coord *sizes)
 {
 	int	**matrix;
 	int	line_size;
@@ -78,15 +78,14 @@ int	**ft_check_board(char *file, int lines, char *symbols)
 	int	k;
 
 	matrix = (int **)malloc((lines + 1) * sizeof(int *));
-	if(!matrix)
+	if (!matrix)
 		throw_error('D');
 	matrix[lines] = NULL;
-
 	i = 0;
-	while(file[i] != '\n')
+	while (file[i] != '\n')
 		i++;
 	line_size = ft_linelen(&file[i + 1]);
-
+	sizes->c = line_size;
 	j = -1;
 	k = line_size;
 	while (file[i])
@@ -115,15 +114,12 @@ int	**ft_check_board(char *file, int lines, char *symbols)
 	return (matrix);
 }
 
-int	**ft_check_file(char *file, t_coord *sizes)
+int	**ft_check_file(char *file, t_coord *sizes, char *symbols)
 {
-	char	symbols[4];
-	int		lines;
+	int	lines;
 
-	symbols[3] = '\0';
 	lines = ft_check_first_line(file, symbols);
 	sizes->r = lines;
-	sizes->c = 27;   // CHANGE HARD CODED VALUE // ToDo
 	printf("%s, %d\n", symbols, lines);
-	return (ft_check_board(file, lines, symbols));
+	return (ft_check_board(file, lines, symbols, sizes));
 }
