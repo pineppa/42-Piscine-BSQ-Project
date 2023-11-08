@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 11:09:47 by molasz-a          #+#    #+#             */
-/*   Updated: 2023/11/08 13:15:25 by molasz-a         ###   ########.fr       */
+/*   Updated: 2023/11/08 14:51:14 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ char	*ft_read_stdin(void)
 
 	map = (char *)malloc(sizeof(char) * (BUFF_SIZE + 1));
 	buff = (char *)malloc(sizeof(char) * (BUFF_SIZE + 1));
+	if (!map || !buff)
+		return (NULL);
 	buff[BUFF_SIZE] = 0;
 	buf_is_empty = 1;
 	while (read(STDIN_FILENO, buff, 64) != 0)
