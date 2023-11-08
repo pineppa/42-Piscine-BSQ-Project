@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 12:24:23 by molasz-a          #+#    #+#             */
-/*   Updated: 2023/11/08 13:37:38 by molasz-a         ###   ########.fr       */
+/*   Updated: 2023/11/08 15:51:48 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,8 @@ int	**ft_check_file(char *file, t_coord *sizes, char *symbols)
 	int	**matrix;
 	int	lines;
 
+	if (ft_strlen(file) <= 5)
+		return (NULL);
 	lines = ft_check_first_line(file, symbols);
 	if (ft_check_duplicated(symbols))
 		return (NULL);
