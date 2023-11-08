@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 20:15:43 by molasz-a          #+#    #+#             */
-/*   Updated: 2023/11/08 13:07:00 by molasz-a         ###   ########.fr       */
+/*   Updated: 2023/11/08 16:40:44 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,12 +76,14 @@ int	ft_read_symbols(int size, char *str, char *symbols)
 {
 	int	i;
 
-	i = size;
-	while (--i > size - 4 && str[i])
+	i = size - 1;
+	while (i > size - 4 && str[i])
 	{
-		if ((str[i] >= 0 && str[i] <= 31) || str[i] == 127)
+		if (str[i] >= 32 && str[i] <= 126)
+			symbols[i - (size - 3)] = str[i];
+		else
 			return (1);
-		symbols[i - (size - 3)] = str[i];
+		i--;
 	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 12:24:23 by molasz-a          #+#    #+#             */
-/*   Updated: 2023/11/08 15:51:48 by molasz-a         ###   ########.fr       */
+/*   Updated: 2023/11/08 16:39:53 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ int	ft_check_first_line(char *str, char *symbols)
 	int		value;
 
 	size = ft_linelen(str);
-	ft_read_symbols(size, str, symbols);
+	if (ft_read_symbols(size, str, symbols))
+		return (-1);
 	num = (char *)malloc((size - 3 + 1) * sizeof (char));
 	if (!num)
 		return (-1);
