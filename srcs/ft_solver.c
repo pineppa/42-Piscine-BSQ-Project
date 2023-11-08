@@ -6,7 +6,7 @@
 /*   By: jsala <jsala@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 09:14:08 by jsala             #+#    #+#             */
-/*   Updated: 2023/11/07 20:24:36 by jsala            ###   ########.fr       */
+/*   Updated: 2023/11/08 12:27:30 by jsala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ t_coord	ft_check_max_pos(int **matrix, t_coord sizes)
 	t_coord	pos_max;
 	int		max_val;
 
+	pos_max.r = 0;
+	pos_max.c = 0;
 	p.r = 0;
 	max_val = 0;
 	while (p.r < sizes.r)

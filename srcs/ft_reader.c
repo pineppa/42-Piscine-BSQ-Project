@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_reader.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: molasz-a <molasz-a@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jsala <jsala@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 11:09:47 by molasz-a          #+#    #+#             */
-/*   Updated: 2023/11/08 11:40:11 by molasz-a         ###   ########.fr       */
+/*   Updated: 2023/11/08 11:48:08 by jsala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ int	file_read(char *file, char *str)
 	while (read(f, &c, 1))
 		str[i++] = c;
 	if (close(f) < 0)
-		return (-1);
+		return (1);
 	return (0);
 }
 

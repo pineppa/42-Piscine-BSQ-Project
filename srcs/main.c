@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: molasz-a <molasz-a@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jsala <jsala@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 17:21:28 by jsala             #+#    #+#             */
-/*   Updated: 2023/11/08 11:32:13 by molasz-a         ###   ########.fr       */
+/*   Updated: 2023/11/08 12:22:10 by jsala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,13 @@ int	exec_solver(char *file)
 	char	symbols[4];
 
 	symbols[3] = '\0';
-	matrix = ft_check_file(file, &sizes, symbols);
+	sizes.r = 0;
+	sizes.c = 0;
+	matrix = ft_check_file(file, &sizes, symbols); //Print matrix if not error
 	if (!matrix)
 		return (1);
 	pos_max = ft_get_bsq_pos(matrix, sizes);
 	ft_print_sol(matrix, symbols, sizes, pos_max);
-	free(file);
 	free_matrix(matrix, sizes.r);
 	return (0);
 }
@@ -65,6 +66,7 @@ int	main(int argc, char **argv)
 		{
 			if (exec_solver(file))
 				throw_error('S');
+			free(file);
 		}
 		i++;
 		if (i != argc)

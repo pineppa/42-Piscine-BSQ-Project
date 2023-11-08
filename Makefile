@@ -23,6 +23,9 @@ all: 		${NAME}
 sanitize:	${OBJS}
 			${CC} -o ${NAME} ${OBJS} "-fsanitize=address"
 
+debug:	${OBJS}
+		${CC} -g -o ${NAME} ${OBJS}
+
 clean:
 			${RM} ${OBJS}
 

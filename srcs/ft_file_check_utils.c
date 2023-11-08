@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_file_check_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: molasz-a <molasz-a@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jsala <jsala@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 20:15:43 by molasz-a          #+#    #+#             */
-/*   Updated: 2023/11/08 11:34:37 by molasz-a         ###   ########.fr       */
+/*   Updated: 2023/11/08 12:18:54 by jsala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	ft_get_cell_status(char *symbols, char c)
 	int	i;
 
 	i = 0;
-	while (i < 4)
+	while (i < 3)
 	{
 		if (symbols[i] == c)
 			break ;
