@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 12:24:23 by molasz-a          #+#    #+#             */
-/*   Updated: 2023/11/08 13:10:42 by molasz-a         ###   ########.fr       */
+/*   Updated: 2023/11/08 13:37:38 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,42 +38,49 @@ int	ft_check_first_line(char *str, char *symbols)
 	return (value);
 }
 
+int	ft_write_line(int *counts, char *symbols, int **matrix, t_coord *sizes)
+{
+	if (counts[3] == '\n')
+	{
+		if (counts[2] != sizes->c && counts[1] > -1)
+			return (1);
+		matrix[++counts[1]] = (int *)malloc((sizes->c + 1) * sizeof (int));
+		if (!matrix[counts[1]])
+			return (1);
+		matrix[counts[1]][sizes->c] = -1;
+		counts[2] = 0;
+	}
+	else
+	{
+		matrix[counts[1]][counts[2]] = ft_get_cell_status(symbols, counts[3]);
+		if (matrix[counts[1]][counts[2]] < 0)
+			return (1);
+		counts[2]++;
+	}
+	return (0);
+}
+
 int	ft_write_matrix(char *file, int **matrix, char *symbols, t_coord *sizes)
 {
-	int	i;
-	int	j;
-	int	k;
+	int	counts[4];
 
-	i = 0;
-	j = -1;
-	k = 0;
-	while (file[i] != '\n' && file[i])
-		i++;
-	sizes->c = ft_linelen(&file[i + 1]);
-	while (file[i])
+	counts[0] = 0;
+	counts[1] = -1;
+	counts[2] = 0;
+	counts[3] = 0;
+	while (file[counts[0]] != '\n' && file[counts[0]])
+		counts[0]++;
+	sizes->c = ft_linelen(&file[counts[0] + 1]);
+	while (file[counts[0]])
 	{
-		if (j > sizes->r - 1)
+		if (counts[1] > sizes->r - 1)
 			return (1);
-		if (file[i] == '\n')
-		{
-			if (k != sizes->c && j > -1)
-				return (1);
-			matrix[++j] = (int *)malloc((sizes->c + 1) * sizeof (int));
-			if (!matrix[j])
-				return (1);
-			matrix[j][sizes->c] = -1;
-			k = 0;
-		}
-		else
-		{
-			matrix[j][k] = ft_get_cell_status(symbols, file[i]);
-			if (matrix[j][k] < 0)
-				return (1);
-			k++;
-		}
-		i++;
+		counts[3] = file[counts[0]];
+		if (ft_write_line(counts, symbols, matrix, sizes))
+			return (1);
+		counts[0]++;
 	}
-	if (j < sizes->r)
+	if (counts[1] < sizes->r)
 		return (1);
 	return (0);
 }
