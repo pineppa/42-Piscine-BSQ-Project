@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: molasz-a <molasz-a@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jsala <jsala@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 17:21:28 by jsala             #+#    #+#             */
-/*   Updated: 2023/11/08 16:30:57 by molasz-a         ###   ########.fr       */
+/*   Updated: 2023/11/08 17:09:34 by jsala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	ft_resolve_files(int argc, char **argv)
 			free(file);
 		}
 		i++;
-		if (i != argc)
+		if (argc != 2)
 			ft_putchar('\n');
 	}
 }
