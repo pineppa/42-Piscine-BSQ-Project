@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 09:38:46 by jsala             #+#    #+#             */
-/*   Updated: 2023/11/08 11:17:22 by molasz-a         ###   ########.fr       */
+/*   Updated: 2023/11/08 12:55:57 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ typedef struct s_coord
 void	ft_putchar(char c);
 void	ft_putstr(char *s);
 int		ft_strlen(char *s);
-void	throw_error(char c);
+void	throw_error(void);
 int		ft_min(int val1, int val2, int val3);
 int		ft_atoi(char *str);
 char	*ft_strcat(char *s1, char *s2);

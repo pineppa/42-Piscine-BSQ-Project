@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_reader.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsala <jsala@student.42.fr>                +#+  +:+       +#+        */
+/*   By: molasz-a <molasz-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 11:09:47 by molasz-a          #+#    #+#             */
-/*   Updated: 2023/11/08 11:48:08 by jsala            ###   ########.fr       */
+/*   Updated: 2023/11/08 12:58:55 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,10 +68,8 @@ char	*ft_read_stdin(void)
 			map = ft_strcat(map, buff);
 	}
 //	free(buff);  Todo: Check why doesn't work
-
-	//TODO remove throw_error (return)
 	if (buf_is_empty)
-		throw_error('W');
+		throw_error();
 	return (map);
 }
 

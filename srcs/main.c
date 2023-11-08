@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsala <jsala@student.42.fr>                +#+  +:+       +#+        */
+/*   By: molasz-a <molasz-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 17:21:28 by jsala             #+#    #+#             */
-/*   Updated: 2023/11/08 12:22:10 by jsala            ###   ########.fr       */
+/*   Updated: 2023/11/08 12:55:10 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int	main(int argc, char **argv)
 		file = ft_read_stdin();
 		ft_putchar('\n');
 		if (exec_solver(file))
-				throw_error('S');
+			throw_error();
 		return (0);
 	}
 	i = 1;
@@ -61,11 +61,11 @@ int	main(int argc, char **argv)
 	{
 		file = ft_file_str(argv[i]);
 		if (!file)
-			throw_error('F');
+			throw_error();
 		else
 		{
 			if (exec_solver(file))
-				throw_error('S');
+				throw_error();
 			free(file);
 		}
 		i++;

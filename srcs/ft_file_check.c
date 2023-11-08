@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_file_check.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsala <jsala@student.42.fr>                +#+  +:+       +#+        */
+/*   By: molasz-a <molasz-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 12:24:23 by molasz-a          #+#    #+#             */
-/*   Updated: 2023/11/08 12:14:37 by jsala            ###   ########.fr       */
+/*   Updated: 2023/11/08 12:52:35 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,15 +61,17 @@ int	ft_write_matrix(char *file, int **matrix, char *symbols, t_coord *sizes)
 	int	k;
 
 	sizes->c = ft_init_write_matrix(&i, &j, &k, file);
-	while (file[i] && j < sizes->r)
+	while (file[i])
 	{
+		if (j > sizes->r - 1)
+			return (1);
 		if (file[i] == '\n')
 		{
 			if (k != sizes->c && j > -1)
-				return (-1);
+				return (1);
 			matrix[++j] = (int *)malloc((sizes->c + 1) * sizeof (int));
 			if (!matrix[j])
-				return (-1);
+				return (1);
 			matrix[j][sizes->c] = -1;
 			k = 0;
 		}
@@ -77,12 +79,14 @@ int	ft_write_matrix(char *file, int **matrix, char *symbols, t_coord *sizes)
 		{
 			matrix[j][k] = ft_get_cell_status(symbols, file[i]);
 			if (matrix[j][k] < 0)
-				return (-1);
+				return (1);
 			k++;
 		}
 		i++;
 	}
-	return (j);
+	if (j < sizes->r)
+		return (1);
+	return (0);
 }
 
 int	**ft_create_matrix(int lines)
@@ -100,7 +104,6 @@ int	**ft_check_file(char *file, t_coord *sizes, char *symbols)
 {
 	int	**matrix;
 	int	lines;
-	int count_lines;
 
 	lines = ft_check_first_line(file, symbols);
 	if (ft_check_duplicated(symbols))
@@ -109,8 +112,7 @@ int	**ft_check_file(char *file, t_coord *sizes, char *symbols)
 	matrix = ft_create_matrix(lines);
 	if (!matrix)
 		return (NULL);
-	count_lines = ft_write_matrix(file, matrix, symbols, sizes);
-	if (count_lines < 0 || count_lines != lines)
+	if (ft_write_matrix(file, matrix, symbols, sizes))
 		return (NULL);
 	return (matrix);
 }
