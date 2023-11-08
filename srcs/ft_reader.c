@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 11:09:47 by molasz-a          #+#    #+#             */
-/*   Updated: 2023/11/08 14:51:14 by molasz-a         ###   ########.fr       */
+/*   Updated: 2023/11/08 15:31:36 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,40 +38,41 @@ char	*ft_strcat(char *dest, char *src)
 	cat_str = malloc(sizeof(char) * (ft_strlen(dest) + ft_strlen(src) + 1));
 	if (cat_str == NULL)
 		return (NULL);
-	i = -1;
-	while (dest[++i])
+	i = 0;
+	while (dest[i])
+	{
 		cat_str[i] = dest[i];
+		i++;
+	}
 	free(dest);
-	j = -1;
-	while (src[++j])
+	j = 0;
+	while (src[j])
+	{
 		cat_str[i + j] = src[j];
-	cat_str[i + j + 1] = '\0';
+		j++;
+	}
+	cat_str[i + j] = '\0';
 	return (cat_str);
 }
 
 char	*ft_read_stdin(void)
 {
-	char	*buff;
+	char	buff;
 	char	*map;
 	int		buf_is_empty;
 
+	buff = 'p';
 	map = (char *)malloc(sizeof(char) * (BUFF_SIZE + 1));
-	buff = (char *)malloc(sizeof(char) * (BUFF_SIZE + 1));
 	if (!map || !buff)
 		return (NULL);
-	buff[BUFF_SIZE] = 0;
 	buf_is_empty = 1;
-	while (read(STDIN_FILENO, buff, 64) != 0)
+	while (read(STDIN_FILENO, &buff, 1) != 0)
 	{
 		buf_is_empty = 0;
-		if (buf_is_empty)
-			map = buff;
-		else
-			map = ft_strcat(map, buff);
+		map = ft_strcat(map, &buff);
 	}
-	//free(buff);  Todo: Check why doesn't work
 	if (buf_is_empty)
-		throw_error();
+		return (NULL);
 	return (map);
 }
 

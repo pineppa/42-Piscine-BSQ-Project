@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 17:21:28 by jsala             #+#    #+#             */
-/*   Updated: 2023/11/08 14:54:09 by molasz-a         ###   ########.fr       */
+/*   Updated: 2023/11/08 15:26:44 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ int	exec_solver(char *file)
 	symbols[3] = '\0';
 	sizes.r = 0;
 	sizes.c = 0;
-	//Print matrix if not error
 	matrix = ft_check_file(file, &sizes, symbols);
 	if (!matrix)
 		return (1);
@@ -79,7 +78,6 @@ int	main(int argc, char **argv)
 			throw_error();
 			return (0);
 		}
-		printf("\n%s\n", file);
 		ft_putchar('\n');
 		if (exec_solver(file))
 			throw_error();

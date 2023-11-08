@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 17:12:07 by jsala             #+#    #+#             */
-/*   Updated: 2023/11/08 14:52:38 by molasz-a         ###   ########.fr       */
+/*   Updated: 2023/11/08 15:13:51 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@ int	ft_strlen(char *s)
 {
 	int	count;
 
-	if (!s)
-		return (0);
 	count = 0;
 	while (s[count])
 		count++;
