@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 12:24:23 by molasz-a          #+#    #+#             */
-/*   Updated: 2023/11/08 16:39:53 by molasz-a         ###   ########.fr       */
+/*   Updated: 2023/11/08 16:52:38 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,8 @@ int	ft_write_matrix(char *file, int **matrix, char *symbols, t_coord *sizes)
 	while (file[counts[0]] != '\n' && file[counts[0]])
 		counts[0]++;
 	sizes->c = ft_linelen(&file[counts[0] + 1]);
+	if (sizes->c < 1)
+		return (1);
 	while (file[counts[0]])
 	{
 		if (counts[1] > sizes->r - 1)
