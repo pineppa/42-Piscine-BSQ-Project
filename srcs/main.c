@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 17:21:28 by jsala             #+#    #+#             */
-/*   Updated: 2023/11/08 12:55:10 by molasz-a         ###   ########.fr       */
+/*   Updated: 2023/11/08 13:15:03 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ int	exec_solver(char *file)
 	symbols[3] = '\0';
 	sizes.r = 0;
 	sizes.c = 0;
-	matrix = ft_check_file(file, &sizes, symbols); //Print matrix if not error
+	//Print matrix if not error
+	matrix = ft_check_file(file, &sizes, symbols);
 	if (!matrix)
 		return (1);
 	pos_max = ft_get_bsq_pos(matrix, sizes);
@@ -43,19 +44,11 @@ int	exec_solver(char *file)
 	return (0);
 }
 
-int	main(int argc, char **argv)
+void	ft_resolve_files(int argc, char **argv)
 {
-	char	*file;
 	int		i;
+	char	*file;
 
-	if (argc == 1)
-	{
-		file = ft_read_stdin();
-		ft_putchar('\n');
-		if (exec_solver(file))
-			throw_error();
-		return (0);
-	}
 	i = 1;
 	while (i < argc)
 	{
@@ -72,5 +65,21 @@ int	main(int argc, char **argv)
 		if (i != argc)
 			ft_putchar('\n');
 	}
+}
+
+int	main(int argc, char **argv)
+{
+	char	*file;
+
+	if (argc == 1)
+	{
+		file = ft_read_stdin();
+		ft_putchar('\n');
+		if (exec_solver(file))
+			throw_error();
+		return (0);
+	}
+	else
+		ft_resolve_files(argc, argv);
 	return (0);
 }

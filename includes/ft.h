@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 09:38:46 by jsala             #+#    #+#             */
-/*   Updated: 2023/11/08 12:55:57 by molasz-a         ###   ########.fr       */
+/*   Updated: 2023/11/08 13:06:31 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,6 @@ int		ft_check_duplicated(char *symbols);
 int		ft_linelen(char *str);
 int		ft_get_cell_status(char *symbols, char c);
 int		ft_check_nlines(int lines, int **matrix);
+int		ft_read_symbols(int size, char *str, char *symbols);
 
 #endif

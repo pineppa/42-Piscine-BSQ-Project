@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 12:24:23 by molasz-a          #+#    #+#             */
-/*   Updated: 2023/11/08 12:52:35 by molasz-a         ###   ########.fr       */
+/*   Updated: 2023/11/08 13:10:42 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,7 @@ int	ft_check_first_line(char *str, char *symbols)
 	int		value;
 
 	size = ft_linelen(str);
-	i = size;
-	while (--i > size - 4 && str[i])
-	{
-		if ((str[i] >= 0 && str[i] <= 31) || str[i] == 127)
-			return (-1);
-		symbols[i - (size - 3)] = str[i];
-	}
+	ft_read_symbols(size, str, symbols);
 	num = (char *)malloc((size - 3 + 1) * sizeof (char));
 	if (!num)
 		return (-1);
@@ -44,23 +38,18 @@ int	ft_check_first_line(char *str, char *symbols)
 	return (value);
 }
 
-int	ft_init_write_matrix(int *i, int *j, int *k, char *file)
-{
-	*i = 0;
-	*j = -1;
-	*k = 0;
-	while (file[*i] != '\n' && file[*i])
-		*i += 1;
-	return (ft_linelen(&file[*i + 1]));
-}
-
 int	ft_write_matrix(char *file, int **matrix, char *symbols, t_coord *sizes)
 {
 	int	i;
 	int	j;
 	int	k;
 
-	sizes->c = ft_init_write_matrix(&i, &j, &k, file);
+	i = 0;
+	j = -1;
+	k = 0;
+	while (file[i] != '\n' && file[i])
+		i++;
+	sizes->c = ft_linelen(&file[i + 1]);
 	while (file[i])
 	{
 		if (j > sizes->r - 1)

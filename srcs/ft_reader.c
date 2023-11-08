@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 11:09:47 by molasz-a          #+#    #+#             */
-/*   Updated: 2023/11/08 12:58:55 by molasz-a         ###   ########.fr       */
+/*   Updated: 2023/11/08 13:15:25 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ char	*ft_read_stdin(void)
 		else
 			map = ft_strcat(map, buff);
 	}
-//	free(buff);  Todo: Check why doesn't work
+	//free(buff);  Todo: Check why doesn't work
 	if (buf_is_empty)
 		throw_error();
 	return (map);

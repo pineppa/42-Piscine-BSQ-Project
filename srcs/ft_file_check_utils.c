@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_file_check_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsala <jsala@student.42.fr>                +#+  +:+       +#+        */
+/*   By: molasz-a <molasz-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 20:15:43 by molasz-a          #+#    #+#             */
-/*   Updated: 2023/11/08 12:18:54 by jsala            ###   ########.fr       */
+/*   Updated: 2023/11/08 13:07:00 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,19 @@ int	ft_check_nlines(int lines, int **matrix)
 		count++;
 	if (count != lines)
 		return (1);
+	return (0);
+}
+
+int	ft_read_symbols(int size, char *str, char *symbols)
+{
+	int	i;
+
+	i = size;
+	while (--i > size - 4 && str[i])
+	{
+		if ((str[i] >= 0 && str[i] <= 31) || str[i] == 127)
+			return (1);
+		symbols[i - (size - 3)] = str[i];
+	}
 	return (0);
 }
