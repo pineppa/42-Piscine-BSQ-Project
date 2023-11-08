@@ -6,7 +6,7 @@
 /*   By: jsala <jsala@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 17:21:28 by jsala             #+#    #+#             */
-/*   Updated: 2023/11/08 09:29:08 by jsala            ###   ########.fr       */
+/*   Updated: 2023/11/08 09:42:10 by jsala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void	free_matrix(int **matrix, int size)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	while(i < size)
+	while (i < size)
 	{
 		free(matrix[i]);
 		i++;

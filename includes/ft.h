@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft.h                                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jsala <jsala@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/08 09:38:46 by jsala             #+#    #+#             */
+/*   Updated: 2023/11/08 09:39:38 by jsala            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FT_H
 # define FT_H
 
@@ -8,10 +20,10 @@
 # include <fcntl.h>
 # include <stdio.h>
 
-typedef struct	s_coord
+typedef struct s_coord
 {
-	int r;
-	int c;
+	int	r;
+	int	c;
 }	t_coord;
 
 void	ft_putchar(char c);

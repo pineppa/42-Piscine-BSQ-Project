@@ -6,7 +6,7 @@
 /*   By: jsala <jsala@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 11:09:47 by molasz-a          #+#    #+#             */
-/*   Updated: 2023/11/08 09:29:07 by jsala            ###   ########.fr       */
+/*   Updated: 2023/11/08 09:41:52 by jsala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ char	*ft_read_stdin(void)
 		else
 			map = ft_strcat(map, buff);
 	}
-	//free(buff);
+//	free(buff);  Todo: Check why doesn't work
 	if (buf_is_empty)
 		throw_error('W');
 	return (map);
