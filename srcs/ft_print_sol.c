@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_sol.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsala <jsala@student.42.fr>                +#+  +:+       +#+        */
+/*   By: molasz-a <molasz-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 11:08:48 by jsala             #+#    #+#             */
-/*   Updated: 2023/11/08 09:29:06 by jsala            ###   ########.fr       */
+/*   Updated: 2023/11/08 10:52:01 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,10 @@ void	ft_putstr(char *s)
 
 	i = 0;
 	while (s[i])
+	{
 		write(1, &s[i], 1);
+		i++;
+	}
 }
 
 void	ft_print_sol(int **matrix, char *sym, t_coord sizes, t_coord pos_max)

@@ -6,13 +6,13 @@
 /*   By: molasz-a <molasz-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 20:15:43 by molasz-a          #+#    #+#             */
-/*   Updated: 2023/11/07 20:24:57 by molasz-a         ###   ########.fr       */
+/*   Updated: 2023/11/08 11:34:37 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft.h"
 
-void	ft_check_duplicated(char *symbols)
+int	ft_check_duplicated(char *symbols)
 {
 	int	i;
 	int	j;
@@ -24,11 +24,12 @@ void	ft_check_duplicated(char *symbols)
 		while (symbols[j])
 		{
 			if (symbols[i] == symbols[j])
-				throw_error('U');
+				return (1);
 			j++;
 		}
 		i++;
 	}
+	return (0);
 }
 
 int	ft_linelen(char *str)
@@ -36,7 +37,7 @@ int	ft_linelen(char *str)
 	int	i;
 
 	i = 0;
-	while (str[i] != '\n')
+	while (str[i] != '\n' && str[i])
 		i++;
 	return (i);
 }
@@ -56,11 +57,10 @@ int	ft_get_cell_status(char *symbols, char c)
 		return (1);
 	else if (i == 1)
 		return (0);
-	throw_error('C');
 	return (-1);
 }
 
-void	ft_check_nlines(int lines, int **matrix)
+int	ft_check_nlines(int lines, int **matrix)
 {
 	int	count;
 
@@ -68,5 +68,6 @@ void	ft_check_nlines(int lines, int **matrix)
 	while (matrix[count])
 		count++;
 	if (count != lines)
-		throw_error('A');
+		return (1);
+	return (0);
 }

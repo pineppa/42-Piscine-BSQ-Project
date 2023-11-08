@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_reader.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsala <jsala@student.42.fr>                +#+  +:+       +#+        */
+/*   By: molasz-a <molasz-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 11:09:47 by molasz-a          #+#    #+#             */
-/*   Updated: 2023/11/08 09:41:52 by jsala            ###   ########.fr       */
+/*   Updated: 2023/11/08 11:40:11 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft.h"
-//TODO Free each malloc!!!
+
 int	file_size(char *file)
 {
 	int		f;
@@ -68,6 +68,8 @@ char	*ft_read_stdin(void)
 			map = ft_strcat(map, buff);
 	}
 //	free(buff);  Todo: Check why doesn't work
+
+	//TODO remove throw_error (return)
 	if (buf_is_empty)
 		throw_error('W');
 	return (map);
@@ -85,6 +87,8 @@ int	file_read(char *file, char *str)
 	i = 0;
 	while (read(f, &c, 1))
 		str[i++] = c;
+	if (close(f) < 0)
+		return (-1);
 	return (0);
 }
 
@@ -95,10 +99,12 @@ char	*ft_file_str(char *file)
 
 	size = file_size(file);
 	if (size < 1)
-		throw_error('R');
+		return (NULL);
 	str = (char *)malloc((size + 1) * sizeof(char));
+	if (!str)
+		return (NULL);
 	str[size] = '\0';
 	if (file_read(file, str))
-		throw_error('T');
+		return (NULL);
 	return (str);
 }
