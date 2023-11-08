@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_sol.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: molasz-a <molasz-a@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jsala <jsala@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 11:08:48 by jsala             #+#    #+#             */
-/*   Updated: 2023/11/08 15:25:43 by molasz-a         ###   ########.fr       */
+/*   Updated: 2023/11/08 15:40:21 by jsala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,6 @@ void	ft_print_sol(int **matrix, char *sym, t_coord sizes, t_coord pos_max)
 	int		i;
 	int		max_val;
 
-	pos_max.r = 0;
-	pos_max.c = 0;
 	p.r = -1;
 	i = 0;
 	max_val = matrix[pos_max.r][pos_max.c];

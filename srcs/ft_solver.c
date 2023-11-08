@@ -6,7 +6,7 @@
 /*   By: jsala <jsala@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 09:14:08 by jsala             #+#    #+#             */
-/*   Updated: 2023/11/08 12:27:30 by jsala            ###   ########.fr       */
+/*   Updated: 2023/11/08 15:41:16 by jsala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ t_coord	ft_check_max_pos(int **matrix, t_coord sizes)
 t_coord	ft_get_bsq_pos(int **matrix, t_coord sizes)
 {
 	t_coord	p;
-	t_coord	pos;
+	t_coord	pos_max;
 
 	p.r = sizes.r - 2;
 	while (p.r >= 0)
@@ -66,6 +66,6 @@ t_coord	ft_get_bsq_pos(int **matrix, t_coord sizes)
 		}
 		p.r--;
 	}
-	pos = ft_check_max_pos(matrix, sizes);
-	return (pos);
+	pos_max = ft_check_max_pos(matrix, sizes);
+	return (pos_max);
 }
