@@ -6,7 +6,7 @@
 /*   By: jsala <jsala@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 17:21:28 by jsala             #+#    #+#             */
-/*   Updated: 2023/11/08 09:42:10 by jsala            ###   ########.fr       */
+/*   Updated: 2023/11/08 10:30:35 by jsala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ int	main(int argc, char **argv)
 	if (argc == 1)
 	{
 		file = ft_read_stdin();
+		ft_putchar('\n');
 		exec_solver(file);
 		return (0);
 	}
@@ -56,6 +57,8 @@ int	main(int argc, char **argv)
 		file = ft_file_str(argv[i]);
 		exec_solver(file);
 		i++;
+		if (i != argc - 1)
+			ft_putchar('\n');
 	}
 	return (0);
 }
