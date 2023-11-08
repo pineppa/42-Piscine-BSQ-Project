@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_reader.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: molasz-a <molasz-a@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jsala <jsala@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 11:09:47 by molasz-a          #+#    #+#             */
-/*   Updated: 2023/11/07 22:50:01 by molasz-a         ###   ########.fr       */
+/*   Updated: 2023/11/08 09:29:07 by jsala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ char	*ft_strcat(char *dest, char *src)
 	j = -1;
 	while (src[++j])
 		cat_str[i + j] = src[j];
-	cat_str[i + j] = '\0';
+	cat_str[i + j + 1] = '\0';
 	return (cat_str);
 }
 
@@ -61,11 +61,11 @@ char	*ft_read_stdin(void)
 	buf_is_empty = 1;
 	while (read(STDIN_FILENO, buff, 64) != 0)
 	{
+		buf_is_empty = 0;
 		if (buf_is_empty)
 			map = buff;
 		else
 			map = ft_strcat(map, buff);
-		buf_is_empty = 0;
 	}
 	//free(buff);
 	if (buf_is_empty)

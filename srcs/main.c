@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: molasz-a <molasz-a@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jsala <jsala@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 17:21:28 by jsala             #+#    #+#             */
-/*   Updated: 2023/11/07 22:57:37 by molasz-a         ###   ########.fr       */
+/*   Updated: 2023/11/08 09:29:08 by jsala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ int	main(int argc, char **argv)
 	if (argc == 1)
 	{
 		file = ft_read_stdin();
-		printf("%s", file);
 		exec_solver(file);
 		return (0);
 	}
