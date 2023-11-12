@@ -1,7 +1,7 @@
 # Title: BSQ Project! The final boss...
 
 # Task:
-The biggest square :\
+The biggest square :
 <ul>
   <li>The aim of this project is to find the biggest square on a map, avoiding obstacles.<\li>
   <li>A file containing the map will be provided. It’ll have to be passed as an argument for your program.</li>
@@ -18,7 +18,7 @@ The biggest square :\
   <li>The program must handle 1 to n files as parameters.</li>
 </ul>
 
-Definition of a valid map :
+Definition of a valid map:
 <ul>
   <li>All lines must have the same length.</li>
   <li>There’s at least one line of at least one box.</li>
@@ -27,7 +27,7 @@ Definition of a valid map :
   <li>The map is invalid if a character is missing from the first line, or if two characters (of empty, full and obstacle) are identical.</li>
   <li>The characters can be any printable character, even numbers.</li>
   <li>In case of an invalid map, your program should display map error on the error output followed by a line break. Your program will then move on to the next map.</li>
-<\ul>
+</ul>
   
 C Piscine’s final Project BSQ
 <ul>
