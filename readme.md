@@ -21,20 +21,27 @@ Definition of a valid map :
 ◦ The characters on the map can only be those introduced in the first line.
 ◦ The map is invalid if a character is missing from the first line, or if two characters (of empty, full and obstacle) are identical.
 ◦ The characters can be any printable character, even numbers.
-◦ In case of an invalid map, your program should display map error on the error
-output followed by a line break. Your program will then move on to the next
-map.
+◦ In case of an invalid map, your program should display map error on the error output followed by a line break. Your program will then move on to the next map.
 
 C Piscine’s final Project BSQ
 ◦ When your program receives more than one map in argument, each solution or map error must be followed by a line break.
 ◦ Should there be no passed arguments, your program must be able to read on the standard input.
-◦ You should have a valid Makefile that’ll compile your project. Your Makefile mustn’t relink
+◦ You should have a valid Makefile that will compile your project. Your Makefile must not relink
 
 # Necessary files and project subdivision
-main.c: Handles arguments entry, calls for argument validations and prepares the space for N calls to the solver functions;
-|- solver.c: Handles the functions to find the problem's solution;
-|- printer.c: Handles the reproduction of the solution map;
+Makefile: to handle the executable creation
+|- Srcs: Files containing functions required to compile the project;
+--| main.c: Handles arguments entry, calls for argument validations and prepares the space for N calls to the solver functions;
+-- |- ft_solver.c: Handles the functions to find the problem's solution;
+-- |- ft_print_sol.c: Handles the reproduction of the solution map;
+-- |- ft_file_check.c: Reads the input file and transforms information into a 2D matrix of int type 0 and 1
+-- |- ft_file_check_util.c: Complementary file with utility functions to handle input checks
+-- |- ft_reader.c: Handles the read functions for files and STDIN passed information 
 
+|- includes: Folder with header files
+-- | ft.h: Header file containing include calls, typedef & struct and functions prototypes;
+
+|- test: Test maps to be used to validate the output;
 
 ## Auxiliary files:
 - Makefile: compiles all the necessary files present in a folder called *srcs* and potentially of a library *ft.h* in *includes*
