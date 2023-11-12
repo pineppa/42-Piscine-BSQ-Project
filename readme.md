@@ -11,7 +11,7 @@ The biggest square :\
     <li>The "empty" character;</li>
     <li>The "obstacle" character;</li>
     <li>The "full" character.</li>
-  </ul>
+  </ul></li>
   <li>The map is made up of ’"empty" characters’, lines and ’"obstacle" characters’.</li>
   <li>The aim of the program is to replace ’"empty" characters’ by ’"full" characters’ in order to represent the biggest square possible.</li>
   <li>In the case that more than one solution exists, we’ll choose to represent the square that’s closest to the top of the map, then the one that’s most to the left.</li>
