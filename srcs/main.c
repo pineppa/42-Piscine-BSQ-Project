@@ -22,6 +22,7 @@ void	free_matrix(int **matrix, int size)
 		free(matrix[i]);
 		i++;
 	}
+	free(matrix);
 }
 
 int	exec_solver(char *file)
@@ -61,7 +62,7 @@ void	ft_resolve_files(int argc, char **argv)
 			free(file);
 		}
 		i++;
-		if (argc != 2)
+		if (argc != argc - 1)
 			ft_putchar('\n');
 	}
 }
