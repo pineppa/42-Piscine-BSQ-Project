@@ -1,8 +1,35 @@
 # BSQ Project! The final boss...
 
-## Problem definition:
+## Table of Content:
+- [Problem definition](#problem-definition)
+- [Solutions](#solution-approach):
+  - [The naive approach](#the-naive-approach)
+  - [A more sophisticated approach](#a-more-sophisticated-approach)
+    - [The Map](#map) - How to interpret the map;
+    - [Step #1](#step-1) - The first steps to fill the matrix; 
+    - [Step #2](#step-2---how-are-we-going-to-fill-the-rest-of-the-matrix) - How to fill the rest of the matrix?;
+    - [Step #3](#step-3---resolve-the-whole-matrix) - Fill the whole map and read the solution;
+- [Solution implementation](#solution-implementation)
+- [Necessary files and project subdivision](#necessary-files-and-project-subdivision)
+- [Detailed program file structure](#detailed-program-structure):
 
-### The biggest square :
+  - **[Makefile](./Makefile)**: To generate the executable;
+  - **[srcs](./srcs/)**: Files containing functions required to compile the project
+    - **[main.c](./srcs/main.c)**: Handles arguments entry, calls for argument validations and prepares the space for N calls to the solver functions;
+    - **[ft_solver.c](./srcs/solver.c)**: Handles the functions to find the problem's solution;
+    - **[ft_print_sol.c](./srcs/ft_print_sol.c)**: Handles the reproduction of the solution map;
+    - **[ft_file_check.c](./srcs/ft_file_check.c)**: Reads the input file and transforms information into a 2D matrix of int type 0 and 1;
+    - **[ft_file_check_util.c](./srcs/ft_file_check_util.c)**: Complementary file with utility functions to handle input checks
+    - **[ft_reader.c](./srcs/ft_reader.c)**: Handles the read functions for files and STDIN passed information
+  - **[includes](./includes/)**: Folder with header files
+
+    - **[ft.h](./includes/ft.h)**: Header file containing include calls, typedef & struct and functions prototypes;
+
+---
+
+## Problem definition
+
+### The biggest square:
 
 - The aim of this project is to find the biggest square on a map, avoiding obstacles.
 - A file containing the map will be provided. It will have to be passed as an argument for your program.
@@ -98,7 +125,11 @@ Beware that:
 
 Therefore, the biggest square possible is given by the lowest of the values available in (x, y + 1), (x + 1, y + 1), (x + 1, y) and it can be simply calculated with the formula:
 
-$$Value(x, y) = 1 + min( Value(x, y + 1), Value(x + 1, y + 1), Value (x + 1, y) )$$
+```math
+Value(x, y) = 1 + min( Value(x, y + 1), Value(x + 1, y + 1), Value (x + 1, y) )$$
+```
+
+#### Step #3 - Resolve the whole matrix
 
 Once position (0, 0) is also filled, we will now the biggest square possible for each position in the whole map. Let's check the biggest value and in case of equality, we select the on in the position nearest to the top edge (lowest y value) and in case of more than a solution we choose the most left (lowest x value).
 
@@ -145,49 +176,59 @@ Handles the requests from the user at program launch. Should handle N arguments 
   - Prints the solution on the standard output (*[ft_print_sol](./srcs/ft_print_sol.c)*)
   - Frees the allocated memory (*[free_matrix](./srcs/main.c)*);
 
-- ***Free used matrix***
+- ***Free the used matrix***
   - Frees the allocated memory to create the 2D array of integers;
 
-### reader.c
-Reads arguments and generates the 2D array
+---
 
-- Reads the arguments *?? one by one ??*, open the file and read the first line to know:
-  - Number of lines on the map;
-  - The character to be used for *EMPTY* spaces;
-  - The character to be used for *OBSTACLES*;
-  - The character to be used for *FULL* spaces; -> To be used to print the final solution
-  -  Example: 9.ox -> Lines: '9', Empty: '.', Obstacles: 'o', Full: 'x';
-- Generates a 2D array map, for which each array contains the line with the read characters;
+### [ft_reader.c](./srcs/ft_reader.c)
+Contains the necessary functions to be able to read arguments and transform the input in a 1D string.
 
-*ASSUMPTION*: It is assumed that these last 3 CHAR arguments will be passed as an array to the solver function whose prototype will be:
-- void	solver(char \*\*map, char \*symbols, int rows, int cols);
-------------
-## checker.c
+- ***ft_read_stdin***: 
+ - Deals with reading directly from the standard input;
+ - Returns the content as a 1D string;
+- ***ft_file_str***:
+  - Determines the size of the given file to allocate the necessary memory size to store the whole content;
+  - Reads the content of the given file;
+  - Returns the content as a 1D string;
 
-Checks that the map passed via the file is correctly defined
+In both cases the output is a 1D string, where '\n' characters are used to recognise different lines as per instructions.
 
-- Checks that a map is valid: --> Return error values?
-- All lines must have the same length.
-- There’s at least one line of at least one box.
-- At each end of line, there’s a line break.
-- The characters on the map can only be those introduced in the first line.
-- The map is invalid if a character is missing from the first line, or if two characters (of empty, full and obstacle) are identical.
-- The characters can be any printable character, even numbers.
-- In case of an invalid map, your program should display map error on the error output followed by a line break. Your program will then move on to the next map.
+---
+
+## [ft_file_check.c](./srcs/ft_file_check.c)
+
+First resolution step, checks that the map passed via the file is correctly defined. IN order it:
+1. Checks if a character is missing from the first line;
+2. Checks if two characters (of empty, full and obstacle) are identical;
+3. Reads the number of lines to be expected;
+4. Creates the array of pointers to int (rows) for the matrix;
+5. Writes the matrix:
+    1. Moves to the second line;
+    2. Checks and stores the size of the   first map line (throws an error if empty);
+    3. For each line:
+        1. Writes the content of the line assigning the correct value to each cell;
+        2.  Returns an error if a symbol doesn't exist or is the solution one;
+        3. Checks that the characters are only printable ones;
+        4. Returns an error if the length is bigger;
+        5. Checks that after writing the length is not shorter than previous lines;
+
+## [ft_file_check_util.c](./srcs/ft_file_check_utils.c)
+Set of functions used by ***[ft_file_check](#ft_file_checkc)*** and separated to comply with Norminette's rules 
 
 -------------
-## solver.c: 
+## [ft_solver.c](./srcs/ft_solver.c): 
 
-Handles the passed map, to solve the problem at hands
-- Generates a matrix 2D array of the same size of map (generated with NxN spaces of int this time); *malloc*
-- Initialise the matrix with 0 and 1 based on obstacles vs empty space;
-- Call the solver algorithm: int ft_get_bsq_pos(int \*\*matrix, int size);
-  - The algorithm substitutes all the 1 with the BSQ and should return the position of the upper left corner (the size can be retrieved via matrix\[row\]\[column\])
-- Frees the generated matrix information and return; *free*
+Resolves the 2D array of 0, 1 integers:
+- Calculates the biggest square size for each position. The 2D array is updated directly;
+- Returns the position of the biggest square;
 
 ------------
-## printer.c: 
-Handles the printing on screen of the solution
+## [ft_print_sol.c](./srcs/ft_print_sol.c): 
 
-- Not yet sure how to do this, probably it will be enough to print every line after substituting the right character in the original 2D matrix
-- At the end of the printing returns (void) and frees the original 2D array.
+Handles the printing on screen of the solution as a 2D matrix.
+
+------------
+## [utils.c](./srcs/utils.c): 
+
+Generic functions used throughout the project;
