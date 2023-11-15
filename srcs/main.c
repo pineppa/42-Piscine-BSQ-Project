@@ -79,7 +79,6 @@ int	main(int argc, char **argv)
 			throw_error();
 			return (0);
 		}
-		ft_putchar('\n');
 		if (exec_solver(file))
 			throw_error();
 		return (0);
