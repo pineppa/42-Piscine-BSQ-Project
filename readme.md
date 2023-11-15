@@ -13,17 +13,17 @@
 - [Necessary files and project subdivision](#necessary-files-and-project-subdivision)
 - [Detailed program file structure](#detailed-program-structure):
 
-  - **[Makefile](./Makefile)**: To generate the executable;
-  - **[srcs](./srcs/)**: Files containing functions required to compile the project
-    - **[main.c](./srcs/main.c)**: Handles arguments entry, calls for argument validations and prepares the space for N calls to the solver functions;
-    - **[ft_solver.c](./srcs/solver.c)**: Handles the functions to find the problem's solution;
-    - **[ft_print_sol.c](./srcs/ft_print_sol.c)**: Handles the reproduction of the solution map;
-    - **[ft_file_check.c](./srcs/ft_file_check.c)**: Reads the input file and transforms information into a 2D matrix of int type 0 and 1;
-    - **[ft_file_check_util.c](./srcs/ft_file_check_util.c)**: Complementary file with utility functions to handle input checks
-    - **[ft_reader.c](./srcs/ft_reader.c)**: Handles the read functions for files and STDIN passed information
-  - **[includes](./includes/)**: Folder with header files
+  - **[Makefile](https://github.com/pineppa/42-Piscine-BSQ-Project/tree/main/Makefile)**: To generate the executable;
+  - **[srcs](https://github.com/pineppa/42-Piscine-BSQ-Project/tree/main/srcs)**: Files containing functions required to compile the project
+    - **[main.c](https://github.com/pineppa/42-Piscine-BSQ-Project/tree/main/srcs/main.c)**: Handles arguments entry, calls for argument validations and prepares the space for N calls to the solver functions;
+    - **[ft_solver.c](https://github.com/pineppa/42-Piscine-BSQ-Project/tree/main/srcs/solver.c)**: Handles the functions to find the problem's solution;
+    - **[ft_print_sol.c](https://github.com/pineppa/42-Piscine-BSQ-Project/tree/main/srcs/ft_print_sol.c)**: Handles the reproduction of the solution map;
+    - **[ft_file_check.c](https://github.com/pineppa/42-Piscine-BSQ-Project/tree/main/srcs/ft_file_check.c)**: Reads the input file and transforms information into a 2D matrix of int type 0 and 1;
+    - **[ft_file_check_util.c](https://github.com/pineppa/42-Piscine-BSQ-Project/tree/main/srcs/ft_file_check_util.c)**: Complementary file with utility functions to handle input checks
+    - **[ft_reader.c](https://github.com/pineppa/42-Piscine-BSQ-Project/tree/main/srcs/ft_reader.c)**: Handles the read functions for files and STDIN passed information
+  - **[includes](https://github.com/pineppa/42-Piscine-BSQ-Project/tree/main/includes/)**: Folder with header files
 
-    - **[ft.h](./includes/ft.h)**: Header file containing include calls, typedef & struct and functions prototypes;
+    - **[ft.h](https://github.com/pineppa/42-Piscine-BSQ-Project/tree/main/includes/ft.h)**: Header file containing include calls, typedef & struct and functions prototypes;
 
 ---
 
@@ -137,51 +137,51 @@ Once position (0, 0) is also filled, we will now the biggest square possible for
 
 # Solution implementation 
 ### Necessary files and project subdivision
-- **[Makefile](./Makefile)**: compiles all the necessary files present in the *[srcs](./srcs/)* folder and potentially of the *[ft.h](./includes/ft.h)* library in *[includes](./includes/)*
+- **[Makefile](https://github.com/pineppa/42-Piscine-BSQ-Project/tree/main/Makefile)**: compiles all the necessary files present in the *[srcs](https://github.com/pineppa/42-Piscine-BSQ-Project/tree/main/srcs/)* folder and potentially of the *[ft.h](https://github.com/pineppa/42-Piscine-BSQ-Project/tree/main/includes/ft.h)* library in *[includes](https://github.com/pineppa/42-Piscine-BSQ-Project/tree/main/includes/)*
 
-- **[srcs](./srcs/)**: Files containing functions required to compile the project;
-  - **[main.c](./srcs/main.c)**: Handles arguments entry, calls for argument validations and prepares the space for N calls to the solver functions;
-  - **[ft_solver.c](./srcs/solver.c)**: Handles the functions to find the problem's solution;
-  - **[ft_print_sol.c](./srcs/ft_print_sol.c)**: Handles the reproduction of the solution map;
-  - **[ft_file_check.c](./srcs/ft_file_check.c)**: Reads the input file and transforms information into a 2D matrix of int type 0 and 1;
-  - **[ft_file_check_util.c](./srcs/ft_file_check_util.c)**: Complementary file with utility functions to handle input checks
-  - **[ft_reader.c](./srcs/ft_reader.c)**: Handles the read functions for files and STDIN passed information
-- **[includes](./includes/)**: Folder with header files
-  - **[ft.h](./includes/ft.h)**: Header file containing include calls, typedef & struct and functions prototypes;
+- **[srcs](https://github.com/pineppa/42-Piscine-BSQ-Project/tree/main/srcs/)**: Files containing functions required to compile the project;
+  - **[main.c](https://github.com/pineppa/42-Piscine-BSQ-Project/tree/main/srcs/main.c)**: Handles arguments entry, calls for argument validations and prepares the space for N calls to the solver functions;
+  - **[ft_solver.c](https://github.com/pineppa/42-Piscine-BSQ-Project/tree/main/srcs/solver.c)**: Handles the functions to find the problem's solution;
+  - **[ft_print_sol.c](https://github.com/pineppa/42-Piscine-BSQ-Project/tree/main/srcs/ft_print_sol.c)**: Handles the reproduction of the solution map;
+  - **[ft_file_check.c](https://github.com/pineppa/42-Piscine-BSQ-Project/tree/main/srcs/ft_file_check.c)**: Reads the input file and transforms information into a 2D matrix of int type 0 and 1;
+  - **[ft_file_check_util.c](https://github.com/pineppa/42-Piscine-BSQ-Project/tree/main/srcs/ft_file_check_util.c)**: Complementary file with utility functions to handle input checks
+  - **[ft_reader.c](https://github.com/pineppa/42-Piscine-BSQ-Project/tree/main/srcs/ft_reader.c)**: Handles the read functions for files and STDIN passed information
+- **[includes](https://github.com/pineppa/42-Piscine-BSQ-Project/tree/main/includes/)**: Folder with header files
+  - **[ft.h](https://github.com/pineppa/42-Piscine-BSQ-Project/tree/main/includes/ft.h)**: Header file containing include calls, typedef & struct and functions prototypes;
 
 ### Auxiliary files:
 
-- **[test](./test/)**: Folder with test maps to be used to validate the output;
+- **[test](https://github.com/pineppa/42-Piscine-BSQ-Project/tree/main/test/)**: Folder with test maps to be used to validate the output;
 - Perl maps generator (Not added);
 
 ---
 
 ## Detailed program structure
 
-### [main.c](./srcs/main.c)
+### [main.c](https://github.com/pineppa/42-Piscine-BSQ-Project/tree/main/srcs/main.c)
 Handles the requests from the user at program launch. Should handle N arguments of type file.
 
 - Handles argument parsing with 2 options:
-  - ***No argument is passed***: Calls function to handle input from the Standard Input (*ft_read_stdin* in *[ft_reader.c](./srcs/ft_reader.c)*)
-  - ***N arguments are passed***: Each map is converted in a string and resolved in *[ft_resolve_files.c](./srcs/main.c)*;
+  - ***No argument is passed***: Calls function to handle input from the Standard Input (*ft_read_stdin* in *[ft_reader.c](https://github.com/pineppa/42-Piscine-BSQ-Project/tree/main/srcs/ft_reader.c)*)
+  - ***N arguments are passed***: Each map is converted in a string and resolved in *[ft_resolve_files.c](https://github.com/pineppa/42-Piscine-BSQ-Project/tree/main/srcs/main.c)*;
 
 - ***Solver execution***:
   - Creates and initialises the necessary variables;
-  - Checks the entry file (*[ft_check_file](./srcs/ft_file_check.c)*):
+  - Checks the entry file (*[ft_check_file](https://github.com/pineppa/42-Piscine-BSQ-Project/tree/main/srcs/ft_file_check.c)*):
     - Prints *Map error* in case the map doesn't follow the rules (and returns a **NULL** pointer);
     - Generates a 2D array of integrers with N x M size and values:
       - 0 - Obstacle;
       - 1 - Empty space;
-  - Finds the biggest square position (*[ft_get_bsq_pos](./srcs/ft_solver.c)*) and returns its position;
-  - Prints the solution on the standard output (*[ft_print_sol](./srcs/ft_print_sol.c)*)
-  - Frees the allocated memory (*[free_matrix](./srcs/main.c)*);
+  - Finds the biggest square position (*[ft_get_bsq_pos](https://github.com/pineppa/42-Piscine-BSQ-Project/tree/main/srcs/ft_solver.c)*) and returns its position;
+  - Prints the solution on the standard output (*[ft_print_sol](https://github.com/pineppa/42-Piscine-BSQ-Project/tree/main/srcs/ft_print_sol.c)*)
+  - Frees the allocated memory (*[free_matrix](https://github.com/pineppa/42-Piscine-BSQ-Project/tree/main/srcs/main.c)*);
 
 - ***Free the used matrix***
   - Frees the allocated memory to create the 2D array of integers;
 
 ---
 
-### [ft_reader.c](./srcs/ft_reader.c)
+### [ft_reader.c](https://github.com/pineppa/42-Piscine-BSQ-Project/tree/main/srcs/ft_reader.c)
 Contains the necessary functions to be able to read arguments and transform the input in a 1D string.
 
 - ***ft_read_stdin***: 
@@ -196,7 +196,7 @@ In both cases the output is a 1D string, where '\n' characters are used to recog
 
 ---
 
-## [ft_file_check.c](./srcs/ft_file_check.c)
+## [ft_file_check.c](https://github.com/pineppa/42-Piscine-BSQ-Project/tree/main/srcs/ft_file_check.c)
 
 First resolution step, checks that the map passed via the file is correctly defined. IN order it:
 1. Checks if a character is missing from the first line;
@@ -213,22 +213,22 @@ First resolution step, checks that the map passed via the file is correctly defi
         4. Returns an error if the length is bigger;
         5. Checks that after writing the length is not shorter than previous lines;
 
-## [ft_file_check_util.c](./srcs/ft_file_check_utils.c)
+## [ft_file_check_util.c](https://github.com/pineppa/42-Piscine-BSQ-Project/tree/main/srcs/ft_file_check_utils.c)
 Set of functions used by ***[ft_file_check](#ft_file_checkc)*** and separated to comply with Norminette's rules 
 
 -------------
-## [ft_solver.c](./srcs/ft_solver.c): 
+## [ft_solver.c](https://github.com/pineppa/42-Piscine-BSQ-Project/tree/main/srcs/ft_solver.c): 
 
 Resolves the 2D array of 0, 1 integers:
 - Calculates the biggest square size for each position. The 2D array is updated directly;
 - Returns the position of the biggest square;
 
 ------------
-## [ft_print_sol.c](./srcs/ft_print_sol.c): 
+## [ft_print_sol.c](https://github.com/pineppa/42-Piscine-BSQ-Project/tree/main/srcs/ft_print_sol.c): 
 
 Handles the printing on screen of the solution as a 2D matrix.
 
 ------------
-## [utils.c](./srcs/utils.c): 
+## [utils.c](https://github.com/pineppa/42-Piscine-BSQ-Project/tree/main/srcs/utils.c): 
 
 Generic functions used throughout the project;
